@@ -1,5 +1,5 @@
 /* https://designsystem.zeiss.com/d/V6diyrWaeh1V/foundations#/color/color-palette */
-:root[data-theme="dark"] {
+:root[data-prefers-color-scheme="dark"] {
   --zs-grey-1: #fff;
   --zs-grey-2: #f8fafc;
   --zs-grey-3: #f2f5f8; /* 浅 */
