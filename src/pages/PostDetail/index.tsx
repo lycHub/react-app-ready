@@ -2,8 +2,9 @@ import React from 'react';
 import { json, LoaderFunctionArgs, defer, Link } from 'react-router-dom';
 import { post } from '../../apis';
 import LoaderAwait from '../../components/LoaderAwait';
-import { Button, Card } from 'antd-mobile';
+import { Button, Card, ActionSheet } from 'antd-mobile';
 
+const ununsed = 'aa';
 function Post({ data }: any) {
   // console.log('Post>>>>', data);
   return (

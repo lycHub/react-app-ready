@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Profiler, useState } from "react";
 import { Button, Space } from "antd-mobile";
 import AppLayout from "./components/AppLayout";
 import { RouterProvider } from "react-router-dom";
@@ -16,9 +16,14 @@ import FullLoading from "./components/FullLoading";
 console.log("generateNeutralColorPalettes", theme.getDesignToken(themeConfig)); */
 
 function App() {
+  function onRender(...args) {
+    console.log('App Profiler', args)
+  }
   return (
     <div className="app h-full">
-      <RouterProvider router={AppRouter()} fallbackElement={<FullLoading getContainer={document.body} />} />
+      <Profiler id="app" onRender={onRender}>
+        <RouterProvider router={AppRouter()} fallbackElement={<FullLoading getContainer={document.body} />} />
+      </Profiler>
     </div>
   );
 }
