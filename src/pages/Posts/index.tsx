@@ -1,9 +1,27 @@
-import React, { Suspense } from 'react';
-import { useLoaderData, json, LoaderFunctionArgs, defer, Await } from 'react-router-dom';
+import React from 'react';
+import { json, LoaderFunctionArgs, defer, useNavigate } from 'react-router-dom';
 import { posts } from '../../apis';
-import FullLoading from '../../components/FullLoading';
-import { LoaderData } from '../../types';
 import LoaderAwait from '../../components/LoaderAwait';
+import { List } from 'antd-mobile';
+
+
+
+function Posts({ data }: any) {
+  // console.log('Posts len>>>>', data[0]);
+  const nav = useNavigate();
+
+  return (
+    <div className="posts h-full" style={{ overflowY: 'auto' }}>
+      <List header='Posts'>
+        {
+          data.map(item => <List.Item key={item.id} title={item.title} onClick={() => { nav('/post/' + item.id) }}>
+            {item.body}
+          </List.Item>)
+        }
+      </List>
+    </div>
+  )
+}
 
 async function loader({ request }: LoaderFunctionArgs) {
   try {
@@ -15,19 +33,13 @@ async function loader({ request }: LoaderFunctionArgs) {
 
 
 function Component() {
-  const loaderData: LoaderData = useLoaderData();
-  console.log('loaderData>>>', loaderData.data)
   return (
-    <LoaderAwait data={loaderData.data}>
-      {(data) => (
-        <div className="posts h-full">
-
-          post-content-{data.length}
-        </div>
-      )}
+    <LoaderAwait>
+      {data => <Posts data={data}></Posts>}
     </LoaderAwait>
   )
 }
+
 
 Component.displayName = 'Posts';
 export { loader, Component }

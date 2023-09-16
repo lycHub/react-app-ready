@@ -21,12 +21,12 @@ function ErrorPage() {
         tip.description = errorData.statusText;
       }
     } else { // axios error
-      /* if (errorData.code) {
+      if (errorData.code) {
         tip.title = errorData.code;
       }
       if (errorData.message) {
         tip.description = errorData.message;
-      } */
+      }
     }
     return tip;
   }, [errorData])
