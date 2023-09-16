@@ -1,9 +1,10 @@
-export default {
+module.exports = {
+  plugins: "stylelint-scss",
   extends: "stylelint-config-standard",
   reportDescriptionlessDisables: true,
   reportInvalidScopeDisables: true,
   reportNeedlessDisables: true,
-  customSyntax: "postcss-less",
+  customSyntax: "postcss-scss",
   ignoreFiles: ["apps/**/*.ignore.scss"],
   rules: {
     "no-descending-specificity": null,
@@ -14,5 +15,6 @@ export default {
         ignoreFunctions: ["constant"],
       },
     ],
+    "at-rule-no-unknown": [true, { ignoreAtRules: ["use"] }],
   },
 };
