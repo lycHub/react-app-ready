@@ -1,0 +1,12 @@
+.full-loading {
+  position: absolute;
+  .loading {
+    --size: 60px;
+  }
+}
+
+.full-loading.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
