@@ -1,21 +1,27 @@
 {
-  "name": "app-ready",
+  "name": "@app-ready/workspace",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "license": "ISC",
+  "keywords": [
+    "react",
+    "workspace"
+  ],
+  "description": "app ready",
+  "workspaces": [
+    "apps\\libs",
+    "apps\\mobile"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
-    "preview": "vite preview",
-    "precommit": "lint-staged",
-    "commit": "cz",
-    "prepare": "husky install"
+    "start": "npm run dev -w=@app-ready/mobile",
+    "build:dev": "npm run build:dev -w=@app-ready/mobile",
+    "build:test": "npm run build:test -w=@app-ready/mobile",
+    "build:prod": "npm run build:prod -w=@app-ready/mobile",
+    "commit": "cz"
   },
   "dependencies": {
     "ahooks": "^3.7.8",
-    "antd-mobile": "^5.32.4",
-    "antd-mobile-icons": "^0.3.0",
     "axios": "^1.5.0",
     "classnames": "^2.3.2",
     "lodash-es": "^4.17.21",
@@ -26,6 +32,7 @@
     "zustand": "^4.4.1"
   },
   "devDependencies": {
+    "@tsconfig/vite-react": "^2.0.1",
     "@types/lodash-es": "^4.17.9",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
@@ -47,9 +54,6 @@
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
   },
-  "browserslist": [
-    "defaults"
-  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"

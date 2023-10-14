@@ -1,5 +1,5 @@
 import pxtorem from "postcss-pxtorem";
-import pxToRemConfig from "./plugins/pxToRem.js";
+import pxToRemConfig from "@app-ready/libs/plugins/pxToRem.js";
 
 export default {
   plugins: [pxtorem(pxToRemConfig())],
