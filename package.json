@@ -18,7 +18,8 @@
     "build:dev": "npm run build:dev -w=@app-ready/mobile",
     "build:test": "npm run build:test -w=@app-ready/mobile",
     "build:prod": "npm run build:prod -w=@app-ready/mobile",
-    "lint": "eslint ",
+    "lint": "eslint apps/*/src/**/*.{ts,tsx} --color --fix",
+    "styleLint": "stylelint apps/*/src/**/*.{scss,css} --color --fix",
     "commit": "cz"
   },
   "dependencies": {

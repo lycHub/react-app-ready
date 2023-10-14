@@ -2,7 +2,7 @@ import { Profiler } from "react";
 import { RouterProvider } from "react-router-dom";
 import AppRouter from "./router";
 import FullLoading from "./components/FullLoading";
-
+const a = 'a';
 function App() {
   /* function onRender(...args) {
     console.log('App Profiler', args)
