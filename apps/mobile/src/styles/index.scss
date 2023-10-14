@@ -1,5 +1,6 @@
-@use "./vars";
+@use "@app-ready/libs/styles/themes/light";
+@use "@app-ready/libs/styles/vars";
+@use "@app-ready/libs/styles/reset";
+@use "@app-ready/libs/styles/global";
+@use "@app-ready/libs/styles/quick";
 @use "./antdVar";
-@use "./reset";
-@use "./quick";
-@use "./global";

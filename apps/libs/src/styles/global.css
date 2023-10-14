@@ -32,12 +32,6 @@
     }
   } */
   
-  #root {
-    min-width: 375px;
-  
-    /* overflow-x: auto; */
-  }
-  
   a {
     color: var(--zs-blue-5);
     cursor: pointer;
