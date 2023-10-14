@@ -7,6 +7,7 @@ function AppHeader() {
       <nav className='h-full'>
         <p><Link to="/home">Home</Link></p>
         <p><Link to="/posts">Posts</Link></p>
+        <p><Link to="/albums">Albums</Link></p>
       </nav>
     </header>
   )

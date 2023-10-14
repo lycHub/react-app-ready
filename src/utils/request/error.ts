@@ -1,5 +1,5 @@
 
-import { message } from "antd";
+import { Toast } from "antd-mobile";
 
 const requestSuccess = (code: number) => code >= 200 && code < 300;
 
@@ -7,9 +7,9 @@ const CommonRequestErrorMsg = '请求失败';
 
 const UnauthorizedCodes = [401];
 
-message.config({
+/* message.config({
   maxCount: 1
-});
+}); */
 
 function handleError(error: any) {
   let errorMsg = '';
@@ -19,7 +19,10 @@ function handleError(error: any) {
     errorMsg = error.data.msg || CommonRequestErrorMsg;
     handleServerError(error.data);
   }
-  message.error(errorMsg);
+  Toast.show({
+    icon: 'fail',
+    content: errorMsg
+  })
   return Promise.reject(error);
 }
 

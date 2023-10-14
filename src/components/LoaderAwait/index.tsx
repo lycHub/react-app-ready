@@ -1,5 +1,4 @@
 import React, { Suspense, ReactElement } from 'react'
-import { Mask, MaskProps, SpinLoading } from 'antd-mobile';
 import FullLoading from '../FullLoading';
 import { Await, useLoaderData } from 'react-router-dom';
 import { LoaderData } from '../../types';
