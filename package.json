@@ -20,6 +20,7 @@
     "build:prod": "npm run build:prod -w=@app-ready/mobile",
     "lint": "eslint apps/*/src/**/*.{ts,tsx} --color --fix",
     "styleLint": "stylelint apps/*/src/**/*.{scss,css} --color --fix",
+    "prepare": "husky install",
     "commit": "cz"
   },
   "dependencies": {
@@ -47,6 +48,8 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "husky": "^8.0.0",
+    "lint-staged": "^14.0.1",
     "postcss-pxtorem": "^6.0.0",
     "postcss-scss": "^4.0.8",
     "sass": "^1.67.0",
