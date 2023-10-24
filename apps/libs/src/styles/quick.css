@@ -18,29 +18,25 @@
 .btn-group {
   display: flex;
   align-items: center;
-  column-gap: var(--gap-14);
+  column-gap: var(--gap-1);
 }
 
 .btn-group.center {
   justify-content: center;
 }
 
+/* .btn-group.full {
+  justify-content: center;
+} */
+
 .btn-group.full .btn {
   flex: 1;
   font-size: var(--text-size-2);
 }
 
-.ml-tiny {
-  margin-left: var(--gap-2);
-}
-
-.mr-tiny {
-  margin-right: var(--gap-2);
-}
-
 .cell-actions {
   display: flex;
-  align-items: center;
+  column-gap: var(--gap-4);
 }
 
 .ellipsis {
@@ -57,6 +53,15 @@
   margin-inline: auto;
 }
 
-.relative {
-  position: relative;
+.select-no-pop {
+  display: none;
+}
+
+.highlight.red {
+  color: var(--zs-red-2);
+}
+
+.text:empty::after {
+  content: "--";
+  font-weight: var(--text-bold-400);
 }

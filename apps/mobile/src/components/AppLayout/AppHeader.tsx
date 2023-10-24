@@ -8,6 +8,7 @@ function AppHeader() {
         <p><Link to="/home">Home</Link></p>
         <p><Link to="/posts">Posts</Link></p>
         <p><Link to="/albums">Albums</Link></p>
+        <p><Link to="/forms">Forms</Link></p>
       </nav>
     </header>
   )
