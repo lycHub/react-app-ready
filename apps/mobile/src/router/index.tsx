@@ -39,6 +39,10 @@ function AppRouter() {
           lazy: () => import("../pages/Forms"),
         },
         {
+          path: "motion",
+          lazy: () => import("../pages/Motion"),
+        },
+        {
           path: "/",
           element: defaultNav(),
         },

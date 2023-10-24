@@ -1,0 +1,42 @@
+export default [
+  {
+    id: "1",
+    name: "tom",
+    age: 16,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com",
+    hobby: ['orange'],
+  },
+  {
+    id: "2",
+    name: "Alisa Ross",
+    age: 25000,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com",
+    hobby: [],
+  },
+  {
+    id: "3",
+    name: "Kevin Sandra",
+    age: 22000,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com",
+    hobby: [],
+  },
+  {
+    id: "4",
+    name: "",
+    age: 17000,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com",
+    hobby: [],
+  },
+  {
+    id: "5",
+    name: "William Smith",
+    age: 27000,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com",
+    hobby: [],
+  },
+] as any[];
