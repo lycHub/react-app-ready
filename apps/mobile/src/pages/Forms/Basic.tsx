@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
+import { unstable_usePrompt as usePrompt } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
 import { Checkbox, Input, Stepper, TextArea } from "antd-mobile";
 import { ErrorMessage } from "@hookform/error-message";
 import ErrorMsgRender from "../../components/ErrorMsgRender";
+import { useSafeState } from "ahooks";
 
 type FormValues = {
   name: string
@@ -17,6 +19,7 @@ function Basic() {
   const {
     reset,
     control,
+    watch,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>({
@@ -30,12 +33,47 @@ function Basic() {
       address: '',
     }
   });
+  const [block, setBlock] = useSafeState(false);
+  const lockHandler = useCallback((event: BeforeUnloadEvent) => {
+    event.returnValue = '离开？';
+    return false;
+  }, []);
+
+  useEffect(() => {
+    const subscription = watch((value, { name }) => { // type, ...rest
+      // @ts-ignore
+      const res = !!value[name || 'name'];
+      setBlock(res);
+      if (res) {
+        addEventListener('beforeunload', lockHandler);
+      } else {
+        removeEventListener('beforeunload', lockHandler);
+      }
+    })
+    return () => {
+      subscription.unsubscribe()
+      removeEventListener('beforeunload', lockHandler);
+    }
+  }, [watch]);
 
   function onSubmit(data: FormValues) {
     console.log("onSubmit :>> ", data);
+    setBlock(false);
   }
+
+  function onReset() {
+    setBlock(false);
+    reset();
+  }
+
+  usePrompt({
+    when: block,
+    message: `Are you sure you want to leave?`
+  });
   return (
     <form className="basic-form" onSubmit={handleSubmit(onSubmit)}>
+      {/* <Prompt when={block} message={`Are you sure you want to leave?`} /> */}
+      <p>blockRef: {block.toString()}</p>
       <div className="form-item">
         <label className="form-label" htmlFor="name">
           姓名：
@@ -211,7 +249,7 @@ function Basic() {
         />
       </div>
       <div className="btn-group">
-        <button type="button" onClick={() => reset()}>reset</button>
+        <button type="button" onClick={onReset}>reset</button>
         <button type="submit">submit</button>
       </div>
     </form>
