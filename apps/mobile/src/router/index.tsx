@@ -4,6 +4,8 @@ import AppLayout from "../components/AppLayout";
 import ErrorPage from "../pages/Error";
 import Home from "../pages/Home";
 
+export const HomePath = '/home';
+
 function AppRouter() {
   /* useEffect(() => {
     console.log('app router run')
@@ -43,20 +45,20 @@ function AppRouter() {
           lazy: () => import("../pages/Motion"),
         },
         {
-          path: "/",
-          element: defaultNav(),
+          path: "no-access",
+          lazy: () => import("../pages/NoAccess"),
+        },
+        {
+          path: "",
+          element: <Navigate to={HomePath} />,
         },
         {
           path: "*",
-          element: defaultNav(),
+          lazy: () => import("../pages/NotFound"),
         },
       ]
     }
   ]);
-}
-
-function defaultNav() {
-  return <Navigate to="/home" />;
 }
 
 export default AppRouter;

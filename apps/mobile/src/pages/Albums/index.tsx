@@ -1,31 +1,39 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { albums } from '../../apis';
+import { MaskBg } from '@app-ready/libs';
 import { List } from 'antd-mobile';
-import { useMount, useSafeState } from 'ahooks';
-import FullLoading from '../../components/FullLoading';
+import { albums } from '../../apis';
+import { useMount, useRequest, useSafeState } from 'ahooks';
+import ErrorPage from '../Error';
 
 function Albums() {
   // console.log('Albums len>>>>', data[0]);
   const nav = useNavigate();
-  const [data, setData] = useSafeState([]);
-  useEffect(() => {
-    albums().then(res => {
-      setData(res);
-    });
-  }, []);
+  const [title, setTitle] = useSafeState('Albums');
+  const { data, run, loading, error } = useRequest(albums, {
+    manual: true
+  });
+  useMount(() => {
+    run();
+  });
+
+  if (loading) {
+    return <MaskBg className="center" />
+  }
+
+  if (error) {
+    return <ErrorPage errorInfo={error} />
+  }
 
   return (
     <div className="Albums h-full" style={{ overflowY: 'auto' }}>
-      <h3>Albums</h3>
+      <h3 onClick={() => { setTitle('useRequest不会重新请求') }}>{title}</h3>
       <div className="album-content h-full relative">
-        {
-          data.length ? <List>
-            {
-              data.map(item => <List.Item key={item.id} title={item.title} onClick={() => { nav('/post/' + item.id) }} />)
-            }
-          </List> : <FullLoading />
-        }
+        <List>
+          {
+            data?.map(item => <List.Item key={item.id} title={item.title} onClick={() => { nav('/post/' + item.id) }} />)
+          }
+        </List>
       </div>
 
     </div>

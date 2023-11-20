@@ -14,5 +14,8 @@
     "libs"
   ],
   "author": "ysx",
-  "license": "ISC"
+  "license": "ISC",
+  "peerDependencies": {
+    "antd": "^5.11.1"
+  }
 }

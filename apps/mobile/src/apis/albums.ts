@@ -1,10 +1,10 @@
 import request from "../utils/request";
 
-function albums(): Promise<any> {
+function albums(): Promise<unknown[]> {
   return request.get('/albums');
 }
 
-function album(id: string): Promise<any> {
+function album(id: string): Promise<unknown> {
   return request.get('/albums/' + id);
 }
 

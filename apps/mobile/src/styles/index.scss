@@ -1,6 +1,7 @@
-@use "@app-ready/libs/styles/themes/light";
-@use "@app-ready/libs/styles/vars";
-@use "@app-ready/libs/styles/reset";
-@use "@app-ready/libs/styles/global";
-@use "@app-ready/libs/styles/quick";
-@use "./antdVar";
+@import url("@app-ready/libs/styles/themes/light");
+@import url("@app-ready/libs/styles/vars");
+@import url("@app-ready/libs/styles/reset");
+@import url("@app-ready/libs/styles/global");
+@import url("@app-ready/libs/styles/quick");
+@import url("@app-ready/libs/styles/antd/index");
+@import url("./antdVar");

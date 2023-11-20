@@ -25,11 +25,7 @@
   justify-content: center;
 }
 
-/* .btn-group.full {
-  justify-content: center;
-} */
-
-.btn-group.full .btn {
+.btn-group.center.full .btn {
   flex: 1;
   font-size: var(--text-size-2);
 }

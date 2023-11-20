@@ -1,18 +1,21 @@
 import { useMemo } from "react";
-import { Button, ErrorBlock } from "antd-mobile";
-import { Link, isRouteErrorResponse, useRouteError } from "react-router-dom";
+import { Button } from "antd";
+import { isRouteErrorResponse, useNavigate, useRouteError } from "react-router-dom";
 import './index.scss';
+import { Result } from "antd";
+import { HomePath } from "../../router";
 
 const tip = {
   title: '加载失败',
   description: ''
 }
 
-function ErrorPage() {
-  const errorData: any = useRouteError();
+function ErrorPage({ errorInfo }: { errorInfo?: Record<string, unknown>; }) {
+  const nav = useNavigate();
+  const errorData: unknown = errorInfo || useRouteError();
   const errorTip = useMemo(() => {
     // 是否router抛出的错，比如loader或action里
-    console.log('isRouteErrorResponse>>>', isRouteErrorResponse(errorData), errorData);
+    // console.log('isRouteErrorResponse>>>', isRouteErrorResponse(errorData), errorData);
     if (isRouteErrorResponse(errorData)) {
       if (errorData.data) {
         tip.title = errorData.data;
@@ -32,11 +35,16 @@ function ErrorPage() {
   }, [errorData])
 
   return (
-    <div id="error-page" className="h-full">
-      <ErrorBlock fullPage status='default' title={errorTip.title} description={errorTip.description}>
-        <Link to="/home"><Button>返回首页</Button></Link>
-      </ErrorBlock>
-    </div>
+    <Result
+      className="error-page h-full"
+      status="error"
+      title={errorTip.title}
+      subTitle={errorTip.description}
+      extra={[
+        <Button key="toHome" onClick={() => { nav(HomePath) }}>回首页</Button>,
+        <Button key="retry" type="primary" onClick={() => { location?.reload() }}>重试</Button>,
+      ]}
+    />
   );
 }
 ErrorPage.displayName = 'ErrorPage';

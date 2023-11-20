@@ -5,7 +5,7 @@
   },
   "include": [
     "src"
-  ],
+, "../libs/src/components/MaskBg"  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

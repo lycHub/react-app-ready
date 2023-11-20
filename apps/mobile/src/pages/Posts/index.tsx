@@ -4,7 +4,7 @@ import { posts } from '../../apis';
 import LoaderAwait from '../../components/LoaderAwait';
 import { List } from 'antd-mobile';
 
-function Posts({ data }: any) {
+function Posts({ data }: unknown) {
   // console.log('Posts len>>>>', data[0]);
   const nav = useNavigate();
 
@@ -27,7 +27,6 @@ function Posts({ data }: any) {
 
 // 只适用于不加载数据就看不了任何ui的页面
 async function loader({ request }: LoaderFunctionArgs) {
-  console.log('loader>>>>')
   try {
     return defer({ data: posts() });
   } catch (error) {

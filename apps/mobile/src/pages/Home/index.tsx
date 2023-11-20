@@ -1,11 +1,45 @@
 import React from 'react';
 import './style.scss';
-
+import { motion } from 'framer-motion';
+import { Button, DatePicker, Input, Select, TimePicker, Typography } from 'antd';
 function Home() {
   return (
-    <div className='home'>
+    <motion.div
+      className='home'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ ease: "easeInOut", duration: 0.4 }}
+    >
       Home
-    </div>
+      <img src="/images/doc.png" alt="doc" width="48" height="48" />
+      <div className="btn-group">
+        <p>text</p>
+        <Button type='primary'>Click</Button>
+        <a>link</a>
+        <Typography.Link>Alink</Typography.Link>
+      </div>
+      <div>
+        <div>
+          <Input className="zs-input" bordered={false} allowClear />
+        </div>
+        <div>
+          <Input.TextArea className="zs-input" bordered={false} allowClear />
+        </div>
+        <div>
+          <Select className="zs-select" style={{ width: '300px' }} mode="multiple" showSearch allowClear optionFilterProp='label' bordered={false} options={[{ label: '撒旦撒', value: 'aa' }]} />
+
+        </div>
+        <div>
+          <DatePicker className='zs-picker' bordered={false} allowClear />
+
+        </div>
+        <div>
+          <TimePicker className='zs-picker' bordered={false} allowClear />
+
+        </div>
+      </div>
+    </motion.div>
   )
 }
 

@@ -68,7 +68,7 @@ function Basic() {
 
   usePrompt({
     when: block,
-    message: `Are you sure you want to leave?`
+    message: '尚未保存，确定离开？'
   });
   return (
     <form className="basic-form" onSubmit={handleSubmit(onSubmit)}>

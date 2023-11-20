@@ -24,8 +24,10 @@
     "commit": "cz"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.2.6",
     "@hookform/error-message": "^2.0.1",
     "ahooks": "^3.7.8",
+    "antd": "^5.11.1",
     "axios": "^1.5.0",
     "classnames": "^2.3.2",
     "framer-motion": "^10.16.4",
@@ -38,6 +40,7 @@
     "zustand": "^4.4.1"
   },
   "devDependencies": {
+    "@snipaste-cli/core": "^0.0.6",
     "@tsconfig/vite-react": "^2.0.1",
     "@types/lodash-es": "^4.17.9",
     "@types/react": "^18.2.15",

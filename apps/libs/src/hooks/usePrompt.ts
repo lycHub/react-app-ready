@@ -48,7 +48,7 @@ function usePrompt(
 }
 
 // You can also reimplement the v5 <Prompt> component API
-function Prompt({ when, message, ...props }: PromptProps) {
+export function Prompt({ when, message, ...props }: PromptProps) {
   usePrompt(when ? message : false, props);
   return null;
 }
