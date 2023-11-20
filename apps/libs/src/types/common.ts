@@ -12,10 +12,10 @@ interface SelectOption<T = Key> {
   label: string;
   value: T;
   children?: SelectOption<T>[];
-  [key: string]: unknown;
+  [key: string]: any;
 }
 
-interface TreeOption<T extends Record<string, unknown>> {
+interface TreeOption<T extends Record<string, any>> {
   key: string;
   title: string;
   children?: TreeOption<T>[];
@@ -27,10 +27,10 @@ type CopyKeys<T> = {
 }
 type PartialByKeys<
   T,
-  K extends keyof unknown = keyof T
+  K extends keyof any = keyof T
 > = CopyKeys<Partial<Pick<T, Extract<keyof T, K>>> & Omit<T, K>>;
 
-interface ServerResponseDto<T = unknown> {
+interface ServerResponseDto<T = any> {
   code: number;
   msg: string;
   data?: T;

@@ -10,7 +10,7 @@ function boolLabel(value?: boolean | number, options = BoolOptions) {
   return options.find(item => item.value == numValue)?.label || '';
 }
 
-function fieldsToNumber<T extends Record<string, unknown>>(data: T, keys: SingleOrArray<keyof T>) {
+function fieldsToNumber<T extends Record<string, any>>(data: T, keys: SingleOrArray<keyof T>) {
   if (data) {
     const props = Array.isArray(keys) ? keys : [keys];
     props.filter(item => data[item] != null).forEach(item => {
@@ -21,7 +21,7 @@ function fieldsToNumber<T extends Record<string, unknown>>(data: T, keys: Single
   return data;
 }
 
-function fieldsToString<T extends Record<string, unknown>>(data: T, keys: SingleOrArray<keyof T>) {
+function fieldsToString<T extends Record<string, any>>(data: T, keys: SingleOrArray<keyof T>) {
   if (data) {
     const props = Array.isArray(keys) ? keys : [keys];
     props.filter(item => data[item] != null).forEach(item => {

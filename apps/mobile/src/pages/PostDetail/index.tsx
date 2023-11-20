@@ -2,9 +2,8 @@ import React from 'react';
 import { json, LoaderFunctionArgs, defer, Link } from 'react-router-dom';
 import { post } from '../../apis';
 import LoaderAwait from '../../components/LoaderAwait';
-import { Button, Card, ActionSheet } from 'antd-mobile';
+import { Button, Card } from 'antd-mobile';
 
-const ununsed = 'aa';
 function Post({ data }: any) {
   // console.log('Post>>>>', data);
   return (
@@ -24,7 +23,7 @@ function Post({ data }: any) {
 
 async function loader({ request, params }: LoaderFunctionArgs) {
   try {
-    return defer({ data: post(params.id) });
+    return defer({ data: post(params.id || '') });
   } catch (error) {
     throw json('博客请求失败', { statusText: `Failed api: ${request.url}` });
   }

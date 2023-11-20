@@ -3,7 +3,7 @@ import { CommonProps } from '@app-ready/libs';
 import './index.css';
 import { Spin } from 'antd';
 
-function MaskBg({ className, children }: PropsWithChildren<Record<string, unknown> & CommonProps>) {
+function MaskBg({ className, children }: PropsWithChildren<Record<string, any> & CommonProps>) {
   return (
     <div className={`mask-bg ${className}`}>{children || <Spin size='large' />}</div>
   )

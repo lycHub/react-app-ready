@@ -10,9 +10,9 @@ const tip = {
   description: ''
 }
 
-function ErrorPage({ errorInfo }: { errorInfo?: Record<string, unknown>; }) {
+function ErrorPage({ errorInfo }: { errorInfo?: Record<string, any>; }) {
   const nav = useNavigate();
-  const errorData: unknown = errorInfo || useRouteError();
+  const errorData: any = errorInfo || useRouteError();
   const errorTip = useMemo(() => {
     // 是否router抛出的错，比如loader或action里
     // console.log('isRouteErrorResponse>>>', isRouteErrorResponse(errorData), errorData);

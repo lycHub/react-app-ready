@@ -1,10 +1,10 @@
-import React, { Suspense, ReactElement } from 'react';
+import { Suspense, ReactElement } from 'react';
 import { MaskBg } from '@app-ready/libs';
 import { Await, useLoaderData } from 'react-router-dom';
 import { LoaderData } from '../../types';
 
 interface Props {
-  children: (data: unknown) => ReactElement;
+  children: (data: any) => ReactElement;
 }
 function LoaderAwait({ children }: Props) {
   const loaderData = useLoaderData() as LoaderData;

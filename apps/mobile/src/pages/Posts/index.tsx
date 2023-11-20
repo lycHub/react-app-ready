@@ -4,7 +4,7 @@ import { posts } from '../../apis';
 import LoaderAwait from '../../components/LoaderAwait';
 import { List } from 'antd-mobile';
 
-function Posts({ data }: unknown) {
+function Posts({ data }: any) {
   // console.log('Posts len>>>>', data[0]);
   const nav = useNavigate();
 
@@ -16,7 +16,7 @@ function Posts({ data }: unknown) {
     <div className="posts h-full" style={{ overflowY: 'auto' }}>
       <List header='Posts'>
         {
-          data.map(item => <List.Item key={item.id} title={item.title} onClick={() => { nav('/post/' + item.id) }}>
+          data.map((item: any) => <List.Item key={item.id} title={item.title} onClick={() => { nav('/post/' + item.id) }}>
             {item.body}
           </List.Item>)
         }
