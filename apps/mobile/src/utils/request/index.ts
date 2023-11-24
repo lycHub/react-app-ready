@@ -1,19 +1,17 @@
-import axios, { AxiosRequestConfig } from 'axios'
+import axios from 'axios';
 import { handleError, requestSuccess } from './error';
 
-interface HttpConfigContext {
+/* interface HttpConfigContext {
   notCheck: boolean;
-}
+} */
 
-interface AxiosConfig extends AxiosRequestConfig {
+/* interface AxiosConfig extends AxiosRequestConfig {
   context?: HttpConfigContext;
-}
-
-const VITE_BASE_URL = 'https://jsonplaceholder.typicode.com';
+} */
 
 // 创建 axios 实例
 const request = axios.create({
-  baseURL: VITE_BASE_URL
+  baseURL: import.meta.env.VITE_API_BASE_URL
 })
 
 request.interceptors.request.use((config) => {
@@ -42,8 +40,8 @@ request.interceptors.response.use(response => {
 }, handleError);
 
 
-function isNotCheck(context?: HttpConfigContext) {
+/* function isNotCheck(context?: HttpConfigContext) {
   return !!context?.notCheck;
-}
+} */
 
 export default request;

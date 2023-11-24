@@ -1,8 +1,7 @@
 {
   "extends": "@tsconfig/vite-react/tsconfig.json",
   "include": [
-    "src"
-, "../libs/src/components/MaskBg"  ],
+    "src", "vite-env.d.ts" ],
   "references": [
     {
       "path": "./tsconfig.node.json"
