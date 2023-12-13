@@ -1,0 +1,2 @@
+<navigation-bar title="日志" back="{{false}}" color="#fff" background="#f60"></navigation-bar>
+<web-view class="web-views" src="http://localhost:8080/home" />
