@@ -1,3 +1,2 @@
-<navigation-bar title="日志" back="{{false}}" color="#fff" background="#f60"></navigation-bar>
-<!-- <web-view class="web-views" src="http://192.168.43.71:8080" /> -->
-<web-view class="web-views" src="http://192.168.43.71:3000/ddb/tickets" />
+<web-view class="web-views" src="http://192.168.43.71:8081" />
+<!-- <web-view class="web-views" src="http://192.168.43.71:3000/ddb/tickets" /> -->
