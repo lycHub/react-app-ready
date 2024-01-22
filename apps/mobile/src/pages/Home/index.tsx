@@ -2,6 +2,8 @@ import React from 'react';
 import './style.scss';
 import { motion } from 'framer-motion';
 import { Button, DatePicker, Input, Select, TimePicker, Typography } from 'antd';
+import ProductCard from '../../components/ProductCard.react';
+import ProductCardTwo from './ProductCardTwo.react';
 function Home() {
   return (
     <motion.div
@@ -11,7 +13,8 @@ function Home() {
       exit={{ opacity: 0 }}
       transition={{ ease: "easeInOut", duration: 0.4 }}
     >
-      Home
+      <ProductCard />
+      <ProductCardTwo />
       <img src="/images/doc.png" alt="doc" width="48" height="48" />
       <div className="btn-group">
         <p>text</p>

@@ -1,0 +1,16 @@
+<script>
+import {Card} from 'antd';
+function ProductCardTwo() {
+  return <Card className="product-card-two">
+    product-card-two
+  </Card>
+}
+export default ProductCardTwo;
+</script>
+
+<style>
+.product-card-two {
+  font-weight: bold;
+  color: yellow;
+}
+</style>
