@@ -37,24 +37,27 @@ export default function reactSingle(options = {}) {
     load(id) {
       const { query } = parseReactRequest(id);
       if (query.react) {
-        return id;
-      }
-    },
-    transform(id) {
-      const { filename, query } = parseReactRequest(id);
-
-      if (query.react) {
         const file = basename(id, extname(id));
         const path = join(
           dirname(config.importerFilePath),
           config.importFilePathMap?.get(file)
         );
-        // console.log("命中>>>", path);
         try {
           const content = readFileSync(path).toString();
-          // console.log("content>>>", content);
+          // console.log("命中>>>", path);
+          return content;
+        } catch (error) {
+          console.log("error>>>", error);
+        }
+      }
+    },
+    transform(code, id) {
+      const { filename, query } = parseReactRequest(id);
+      if (query.react) {
+        // console.log("命中222>>>", id, code);
+        try {
           const { parse } = compiler;
-          const { descriptor, errors } = parse(content, {
+          const { descriptor, errors } = parse(code, {
             filename,
           });
           if (!errors.length) {
