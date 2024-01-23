@@ -1,11 +1,11 @@
 import { createFilter } from "rollup-pluginutils";
 import { readFileSync } from "node:fs";
 import { join, basename, dirname, extname } from "node:path";
-import { parseReactRequest } from "./utils";
+import { parseReactRequest } from "./utils.js";
+import { DefaultOptions } from "./help.js";
 import compiler from "@vue/compiler-sfc";
 import * as sass from "sass";
 import less from "less";
-import { DefaultOptions } from "./help";
 
 export default function reactSingle(options = {}) {
   const finalOptions = { ...DefaultOptions, ...options };

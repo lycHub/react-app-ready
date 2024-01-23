@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import buildTime from "@app-ready/libs/plugins/time";
-import reactSingle from "./plugins/singleFile";
+import reactSingle from "react-single-plugin";
 import Inspect from "vite-plugin-inspect";
 
 export default defineConfig(({ command }) => {

@@ -13,7 +13,8 @@
   "dependencies": {
     "antd-mobile": "^5.33.0",
     "antd-mobile-icons": "^0.3.0",
-    "@app-ready/libs": "*"
+    "@app-ready/libs": "*",
+    "react-single-plugin": "*"
   },
   "browserslist": [
     "defaults"

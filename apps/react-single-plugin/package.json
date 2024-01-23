@@ -1,0 +1,21 @@
+{
+  "name": "react-single-plugin",
+  "version": "1.0.0",
+  "description": "vite plugin: react单文件组件",
+  "homepage": "https://madom.gitee.io/ysx-videos",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lycHub"
+  },
+  "type": "module",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "dependencies": {
+    "rollup-pluginutils": "^2.8.2",
+    "sass": "^1.70.0",
+    "@vue/compiler-sfc": "^3.4.15",
+    "less": "^4.2.0"
+  },
+  "author": "ysx",
+  "license": "MIT"
+}
