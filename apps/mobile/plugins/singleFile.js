@@ -4,11 +4,12 @@ import { join, basename, dirname, extname } from "node:path";
 import { parseReactRequest } from "./utils";
 import compiler from "@vue/compiler-sfc";
 import * as sass from "sass";
+import less from "less";
 import { DefaultOptions } from "./help";
 
 export default function reactSingle(options = {}) {
   const finalOptions = { ...DefaultOptions, ...options };
-  // const filter = createFilter(options.include, options.exclude);
+  const filter = createFilter(options.include, options.exclude);
   let config = {
     importFilePathMap: new Map(),
   };
@@ -22,15 +23,16 @@ export default function reactSingle(options = {}) {
     },
     enforce: "pre",
     resolveId(id, from) {
+      if (!filter(id)) return id;
+      if (parseReactRequest(id).query.react) {
+        return id;
+      }
       if (finalOptions.ext.test(id)) {
         config.importerFilePath = from;
         const file = basename(id, extname(id));
         config.importFilePathMap?.set(file, id);
         // console.log("resolveId>>>", from);
         return id.replace(finalOptions.ext, ".tsx?react");
-      }
-      if (parseReactRequest(id).query.react) {
-        return id;
       }
     },
 
@@ -51,7 +53,7 @@ export default function reactSingle(options = {}) {
         }
       }
     },
-    transform(code, id) {
+    async transform(code, id) {
       const { filename, query } = parseReactRequest(id);
       if (query.react) {
         // console.log("命中222>>>", id, code);
@@ -63,7 +65,7 @@ export default function reactSingle(options = {}) {
           if (!errors.length) {
             const scriptContent = descriptor?.script.content || "";
             // console.log("filename>>", scriptContent, descriptor?.styles);
-            const styles = genStyles(descriptor?.styles);
+            const styles = await genStyles(descriptor?.styles);
             const code = `${scriptContent}\n${styles}`;
             // 结果会进入transform的第二个参数
             return {
@@ -79,21 +81,39 @@ export default function reactSingle(options = {}) {
   };
 }
 
-function genStyles(styles) {
+async function genStyles(styles) {
   let content = "";
   if (styles.length) {
-    styles.forEach((item) => {
-      content += item.content;
-    });
-  }
-
-  const res = sass.compileString(content, { styles: "compressed" });
-  // .product-card{font-weight:bold;color:yellow;}
-  if (content) {
-    return `const styleTag = document.createElement('style');
-    // styleTag.textContent = ".product-card{font-weight:bold;color:yellow;}";
-    styleTag.textContent = ${JSON.stringify(res.css)};
-    document.head.appendChild(styleTag);`;
+    const styleContents = await Promise.all(
+      styles.map((item) => {
+        const process = item.lang === "less" ? "less" : "sass";
+        return transformStyleContent(item.content, process);
+      })
+    );
+    content = styleContents.join("\n");
+    // console.log("content>>", content);
+    if (content) {
+      return `const styleTag = document.createElement('style');
+      // styleTag.textContent = ".product-card{font-weight:bold;color:yellow;}";
+      styleTag.textContent = ${JSON.stringify(content)};
+      document.head.appendChild(styleTag);`;
+    }
   }
   return content;
+}
+
+async function transformStyleContent(content, type) {
+  let res = content;
+  switch (type) {
+    case "sass":
+      res = sass.compileString(content, { styles: "compressed" }).css;
+      break;
+    case "less":
+      res = await less.render(content, { compress: true }).then((result) => {
+        // console.log("less res>>>", result.css);
+        return result.css;
+      });
+      break;
+  }
+  return res;
 }

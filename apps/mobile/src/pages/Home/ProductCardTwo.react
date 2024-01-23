@@ -3,14 +3,25 @@ import {Card} from 'antd';
 function ProductCardTwo() {
   return <Card className="product-card-two">
     product-card-two
+    <span>abc text</span>
   </Card>
 }
 export default ProductCardTwo;
 </script>
 
-<style>
+<style scoped lang="scss">
+$textColor: red;
 .product-card-two {
   font-weight: bold;
   color: yellow;
+  span {
+    color: $textColor;
+  }
+}
+</style>
+
+<style scoped>
+.product-card-two {
+  background-color: blue;
 }
 </style>

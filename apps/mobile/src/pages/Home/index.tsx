@@ -13,7 +13,7 @@ function Home() {
       exit={{ opacity: 0 }}
       transition={{ ease: "easeInOut", duration: 0.4 }}
     >
-      <ProductCard />
+      <ProductCard type="a" />
       <ProductCardTwo />
       <img src="/images/doc.png" alt="doc" width="48" height="48" />
       <div className="btn-group">
