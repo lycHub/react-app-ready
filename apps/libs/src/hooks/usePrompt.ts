@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef } from "react";
 import {
   useBeforeUnload,
-  unstable_useBlocker as useBlocker,
+  useBlocker,
 } from "react-router-dom";
 
 // You can abstract `useBlocker` to use the browser's `window.confirm` dialog to

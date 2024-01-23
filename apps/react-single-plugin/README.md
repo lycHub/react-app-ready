@@ -1,6 +1,8 @@
 # Vite plugin - React单文件插件
 
-类似.vue一样的单文件组件
+类似.vue一样的单文件组件eg:
+
+**ProductCard.react**
 
 ```
 <script>
@@ -41,7 +43,9 @@
 </style>
 ```
 
-## usage
+## [Demo](https://stackblitz.com/edit/vitejs-vite-2wqebx?file=src%2FApp.react)
+
+## Usage
 > npm add react-single-plugin -D
 
 ```javascript
@@ -64,6 +68,28 @@ export default {
    ]
   }
 
+```
+
+## 临时解决ts检测
+
+1. 新建vite-env.d.ts(与src同级)
+```typescript
+/// <reference types="vite/client" />
+declare module '*.react' {
+  import { FC } from 'react';
+  export default <P extends Record<string, any>>(props: P) => FC<P>;
+}
+
+```
+
+2. 加入tsconfig.json
+```json
+
+{
+  // ...
+  "include": [ "src", "vite-env.d.ts", "react-env.d.ts" ],
+  // ...
+}
 ```
 
 tip: 源码未经过编译，npm i后可按需修改
