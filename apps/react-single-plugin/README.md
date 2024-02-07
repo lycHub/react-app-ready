@@ -1,6 +1,6 @@
 # Vite plugin - React单文件插件
 
-类似.vue一样的单文件组件eg:
+**教练，我想写vue**  <img src="https://pic3.zhimg.com/50/v2-cddf31864b4c6fd5cebadb460684dcba_hd.jpg?source=1940ef5c" width="30" />
 
 **ProductCard.react**
 
@@ -92,4 +92,6 @@ declare module '*.react' {
 }
 ```
 
-tip: 源码未经过编译，npm i后可按需修改
+tip: 玩具插件切勿当真，npm i下载的就是源码。
+
+vite中实现此功能有些限制，它会先行校验文件后缀，如果真想实现建议直接基于rollup或webpack
