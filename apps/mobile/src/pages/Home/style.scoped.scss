@@ -1,0 +1,23 @@
+.home {
+  font-size: 22px;
+  .btn-group {
+    border: 1px solid #955a5a;
+  }
+
+  .form-controls {
+    border: 1px solid #5caade;
+    color: bisque;
+    margin-top: 20px;
+    .form-control {
+      font-size: 18px;
+    }
+  }
+
+  :global(.red) {
+    color: red;
+  }
+
+  :deep(.ant-btn) {
+    background-color: aqua!important;
+  }
+}

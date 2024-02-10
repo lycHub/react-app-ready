@@ -1,21 +1,3 @@
 .forms-page {
-  .basic-form {
-    max-height: 200px;
-    overflow-y: auto;
-    border: 1px solid;
-    padding: 12px;
-    margin-bottom: var(--gap-6);
-
-    .form-item {
-      margin-bottom: var(--gap-8);
-
-      &:last-child {
-        margin-bottom: var(--gap-0);
-      }
-
-      .form-control .adm-input {
-        background-color: var(--zs-grey-1);
-      }
-    }
-  }
+  
 }

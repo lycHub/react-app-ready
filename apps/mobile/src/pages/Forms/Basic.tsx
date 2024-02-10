@@ -5,6 +5,7 @@ import { Checkbox, Input, Stepper, TextArea } from "antd-mobile";
 import { ErrorMessage } from "@hookform/error-message";
 import ErrorMsgRender from "../../components/ErrorMsgRender";
 import { useSafeState } from "ahooks";
+import './base.scoped.scss';
 
 type FormValues = {
   name: string

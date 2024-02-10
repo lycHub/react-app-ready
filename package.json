@@ -12,7 +12,8 @@
   "workspaces": [
     "apps\\libs",
     "apps\\mobile",
-    "apps\\react-single-plugin"
+    "apps\\react-single-plugin",
+    "apps\\react-scope-css-plugin"
   ],
   "scripts": {
     "start": "npm run dev -w=@app-ready/mobile",

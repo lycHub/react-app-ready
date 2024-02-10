@@ -2,6 +2,7 @@ import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useSafeState } from "ahooks";
 import { Button } from "antd-mobile";
+import './base.scoped.scss';
 
 function Basic() {
   const [show, setShow] = useSafeState(false);

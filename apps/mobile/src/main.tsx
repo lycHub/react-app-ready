@@ -1,4 +1,4 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './styles/index.scss';
@@ -18,37 +18,36 @@ const MainColorConfig = {
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <ConfigProvider
-      theme={{
-        token: {
-          colorTextBase: MainColorConfig.font,
+  <ConfigProvider
+    theme={{
+      token: {
+        colorTextBase: MainColorConfig.font,
 
-          colorPrimary: MainColorConfig.blue,
-          colorLink: MainColorConfig.blue,
-          colorInfo: MainColorConfig.blue,
-          colorInfoText: MainColorConfig.blue,
-          colorPrimaryText: MainColorConfig.blue,
+        colorPrimary: MainColorConfig.blue,
+        colorLink: MainColorConfig.blue,
+        colorInfo: MainColorConfig.blue,
+        colorInfoText: MainColorConfig.blue,
+        colorPrimaryText: MainColorConfig.blue,
 
-          // 红
-          colorError: MainColorConfig.red,
-          colorErrorText: MainColorConfig.red,
-          colorHighlight: MainColorConfig.red,
+        // 红
+        colorError: MainColorConfig.red,
+        colorErrorText: MainColorConfig.red,
+        colorHighlight: MainColorConfig.red,
 
-          colorSuccess: MainColorConfig.green,
-          colorSuccessText: MainColorConfig.green,
+        colorSuccess: MainColorConfig.green,
+        colorSuccessText: MainColorConfig.green,
 
-          colorWarning: MainColorConfig.yellow,
-          colorWarningText: MainColorConfig.yellow
-        },
-        components: {
-          Input: ResetFormConfig,
-          InputNumber: ResetFormConfig,
-          DatePicker: ResetFormConfig,
-          ColorPicker: ResetFormConfig,
-        }
-      }}>
-      <App />
-    </ConfigProvider>
-  </React.StrictMode>,
+        colorWarning: MainColorConfig.yellow,
+        colorWarningText: MainColorConfig.yellow
+      },
+      components: {
+        Input: ResetFormConfig,
+        InputNumber: ResetFormConfig,
+        DatePicker: ResetFormConfig,
+        ColorPicker: ResetFormConfig,
+      }
+    }}>
+    <StrictMode><App /></StrictMode>
+
+  </ConfigProvider>
 )

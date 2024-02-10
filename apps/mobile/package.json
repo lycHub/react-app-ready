@@ -11,12 +11,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "antd-mobile": "^5.33.0",
-    "antd-mobile-icons": "^0.3.0",
     "@app-ready/libs": "*",
-    "react-single-plugin": "*"
+    "antd-mobile": "^5.33.0",
+    "antd-mobile-icons": "^0.3.0"
   },
   "browserslist": [
     "defaults"
-  ]
+  ],
+  "devDependencies": {
+    "react-scope-css-plugin": "^1.0.0",
+    "react-single-plugin": "*"
+  }
 }
