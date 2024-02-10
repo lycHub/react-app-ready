@@ -29,6 +29,7 @@ export default {
   }
 ```
 
+## [Demo](https://stackblitz.com/edit/vitejs-vite-nc4lb2?file=src%2FApp.tsx)
 
 ### Related Package
 [@vue/compiler-sfc](https://github.com/vuejs/core/tree/main/packages/compiler-sfc)
