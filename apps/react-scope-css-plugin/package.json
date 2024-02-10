@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-react-scope-css",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "react scope css",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -8,7 +8,7 @@
   "homepage": "https://github.com/lycHub",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lycHub/react-app-ready.git"
+    "url": "https://github.com/lycHub/react-app-ready/tree/vitePlugin/apps/react-scope-css-plugin"
   },
   "keywords": [
     "vite",

@@ -3,12 +3,12 @@
 **移植 [Vue scoped css](https://cn.vuejs.org/api/sfc-css-features.html#scoped-css) 到react**
 
 ## Usage
-> npm add react-scope-css-plugin -D
+> npm add vite-plugin-react-scope-css -D
 
 
 vite.config.js:
 ```javascript
-import reactScopedCss from "react-scope-css-plugin";
+import reactScopedCss from "vite-plugin-react-scope-css";
 
 export default {
     //...
