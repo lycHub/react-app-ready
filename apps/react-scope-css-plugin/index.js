@@ -25,7 +25,6 @@ export default (options = {}) => {
     },
     async transform(code, id) {
       const { query, filename } = parseReactRequest(id);
-
       if (query.scoped) {
         // console.log("transform>>>", id, query);
         const isProd = command === "build";
@@ -53,9 +52,8 @@ export default (options = {}) => {
           map: result.map,
         };
       }
-
-      if (!filter(id)) return;
-      // const { filename, query } = parseReactRequest(id);
+      if (!filter(filename)) return;
+      // console.log("filename>>>", filename);
       const res = babelScopedJsx(code, { ...finalOptions, id });
       // console.log("transform>>>", res.code);
       return res;

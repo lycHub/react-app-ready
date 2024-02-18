@@ -49,9 +49,8 @@ export default (value, { cssReg, id }) => {
     },
   });
   const { code, map } = generate.default(ast, {}, value);
-  if (id.includes("Home")) {
+  /* if (id.includes("Home")) {
     console.log("Home code>", code);
-  }
-
+  } */
   return { code, map };
 };
