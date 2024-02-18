@@ -28,7 +28,7 @@ export default (value, { cssReg, id }) => {
     StringLiteral(path) {
       if (cssReg.test(path.node.value)) {
         needScoped = true;
-        // console.log("Identifier path>>>", filename);
+        // console.log("Identifier path>>>", id);
         path.replaceWith(
           types.stringLiteral(path.node.value + "?scoped=" + hash)
         );
@@ -49,5 +49,9 @@ export default (value, { cssReg, id }) => {
     },
   });
   const { code, map } = generate.default(ast, {}, value);
+  if (id.includes("Home")) {
+    console.log("Home code>", code);
+  }
+
   return { code, map };
 };

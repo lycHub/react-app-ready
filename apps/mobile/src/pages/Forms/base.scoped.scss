@@ -13,7 +13,7 @@
         margin-bottom: var(--gap-0);
       }
 
-      .form-control .adm-input {
+      .form-control :global(.adm-input) {
         background-color: var(--zs-grey-1);
       }
     }
