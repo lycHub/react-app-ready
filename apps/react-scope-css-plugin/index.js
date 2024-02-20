@@ -47,16 +47,13 @@ export default (options = {}) => {
         /* if (id.includes("Forms")) {
           console.log("Forms scoped>>", query.scoped, result.code);
         } */
-        return {
-          code: result.code,
-          map: result.map,
-        };
+        return result;
       }
       if (!filter(filename)) return;
       // console.log("filename>>>", filename);
-      const res = babelScopedJsx(code, { ...finalOptions, filename });
-      // console.log("transform>>>", res.code);
-      return res;
+      const result = babelScopedJsx(code, { ...finalOptions, filename });
+      // console.log("transform>>>", result.code);
+      return result;
     },
   };
 };
