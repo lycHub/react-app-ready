@@ -54,7 +54,7 @@ export default (options = {}) => {
       }
       if (!filter(filename)) return;
       // console.log("filename>>>", filename);
-      const res = babelScopedJsx(code, { ...finalOptions, id });
+      const res = babelScopedJsx(code, { ...finalOptions, filename });
       // console.log("transform>>>", res.code);
       return res;
     },
