@@ -20,7 +20,7 @@ export default {
    // with options
   export default {
     plugins: [
-      // 以下示例是默认值
+      // The example options is default value, The css filename with end of '.scoped.css' will be scoped, eg: test.scoped.css
       reactScopedCss({
          include: /\.[jt]sx$/,
          cssReg: /\.scoped\.(le|sa|sc|c)ss$/,
@@ -28,6 +28,9 @@ export default {
    ]
   }
 ```
+
+
+
 
 ## [Demo](https://stackblitz.com/edit/vitejs-vite-nc4lb2?file=src%2FApp.tsx)
 
