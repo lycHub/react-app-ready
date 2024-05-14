@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { handleError, requestSuccess } from './error';
 
+
+
 /* interface HttpConfigContext {
   notCheck: boolean;
 } */
@@ -21,6 +23,9 @@ request.interceptors.request.use((config) => {
     headers.Authorization = `Bearer ${token}`;
   }
   config.headers = headers; */
+  if (import.meta.env.DEV) {
+    axios.post('/auto-dts', config);
+  }
   return config;
 }, handleError);
 

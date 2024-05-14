@@ -19,7 +19,6 @@
     "defaults"
   ],
   "devDependencies": {
-    "react-scope-css-plugin": "^1.0.0",
-    "react-single-plugin": "*"
+    "vite-plugin-request-to-dts": "^1.0.0"
   }
 }

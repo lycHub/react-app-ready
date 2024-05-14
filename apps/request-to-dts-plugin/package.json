@@ -1,0 +1,31 @@
+{
+  "name": "vite-plugin-request-to-dts",
+  "version": "1.0.0",
+  "description": "Automatic generation dts file based on request",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "type": "module",
+  "homepage": "https://github.com/lycHub",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lycHub/react-app-ready/tree/vitePlugin/apps/request-to-dts-plugin"
+  },
+  "keywords": [
+    "vite",
+    "react",
+    "typescript",
+    "request"
+  ],
+  "author": "ysx",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "fs-extra": "^11.2.0"
+  },
+  "peerDependencies": {
+    "axios": "^1.6.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
