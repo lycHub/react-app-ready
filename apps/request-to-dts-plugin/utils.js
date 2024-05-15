@@ -1,3 +1,11 @@
+import { fileURLToPath } from "node:url";
+import { dirname } from "node:path";
+
+export function getDirname() {
+  const filename = fileURLToPath(import.meta.url);
+  return dirname(filename);
+}
+
 export function isJson(str) {
   if (typeof str == "string") {
     try {
@@ -14,4 +22,8 @@ export function isJson(str) {
 
 export function isObj(obj) {
   return Object.prototype.toString.call(obj) === "[object Object]";
+}
+
+export function isArray(obj) {
+  return Object.prototype.toString.call(obj) === "[object Array]";
 }

@@ -9,7 +9,15 @@ export default defineConfig(({ command }) => {
   return {
     envDir: "envs",
     cacheDir: "../../node_modules/.vite",
-    plugins: [Inspect(), autoDts(), react(), buildTime()],
+    plugins: [
+      Inspect(),
+      autoDts({
+        // customUniqKey: (pathname) => pathname + "-a.d",
+        // outputDir: "/autoTypes",
+      }),
+      react(),
+      buildTime(),
+    ],
     server: {
       host: true,
       port: 8080,

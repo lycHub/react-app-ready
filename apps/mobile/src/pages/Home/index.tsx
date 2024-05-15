@@ -3,7 +3,15 @@ import './style.scoped.scss';
 import './style2.scoped.scss';
 import { motion } from 'framer-motion';
 import { Button, DatePicker, Input, Select, TimePicker, Typography } from 'antd';
+import request from '../../utils/request';
+import { posts } from '../../apis/post';
 function Home() {
+  function send() {
+    posts().then(res => {
+
+    })
+  }
+
   return (
     <motion.div
       className='home'
@@ -15,7 +23,7 @@ function Home() {
       <img src="/images/doc.png" alt="doc" width="48" height="48" />
       <div className="btn-group">
         <p className='text-p'>text</p>
-        <Button type='primary'>Click</Button>
+        <Button type='primary' onClick={send}>Click</Button>
         <a>link</a>
         <Typography.Link>Alink</Typography.Link>
       </div>
