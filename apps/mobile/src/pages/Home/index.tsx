@@ -4,12 +4,17 @@ import './style2.scoped.scss';
 import { motion } from 'framer-motion';
 import { Button, DatePicker, Input, Select, TimePicker, Typography } from 'antd';
 import request from '../../utils/request';
-import { posts } from '../../apis/post';
+import { posts, post } from '../../apis/post';
+import { albums } from '../../apis/albums';
+import { xmData } from '../../apis/xmly';
 function Home() {
   function send() {
-    posts().then(res => {
+    Promise.all([
+      posts(),
+      xmData(),
+    ]).then(res => {
 
-    })
+    });
   }
 
   return (

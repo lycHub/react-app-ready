@@ -1,7 +1,6 @@
-import axios from 'axios';
-import { handleError, requestSuccess } from './error';
-
-
+import axios from "axios";
+import { handleError, requestSuccess } from "./error";
+import { kebabCase } from "lodash-es";
 
 /* interface HttpConfigContext {
   notCheck: boolean;
@@ -13,8 +12,8 @@ import { handleError, requestSuccess } from './error';
 
 // 创建 axios 实例
 const request = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL
-})
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+});
 
 request.interceptors.request.use((config) => {
   /* const headers: Record<string, any> = config.headers || {};
@@ -23,27 +22,28 @@ request.interceptors.request.use((config) => {
     headers.Authorization = `Bearer ${token}`;
   }
   config.headers = headers; */
-  if (import.meta.env.DEV) {
-    axios.post('/auto-dts', config);
-  }
+
   return config;
 }, handleError);
 
-
-request.interceptors.response.use(response => {
-  /* const { data, config } = response;
+request.interceptors.response.use((response) => {
+  const { status, data, config } = response;
+  /* 
   const notCheck = isNotCheck((config as AxiosConfig).context);
   if (notCheck || requestSuccess(data.code)) { // 后端的code
     return notCheck ? data : data.data ?? null;
   }
   return handleError(response); */
 
-  if (requestSuccess(response.status)) {
+  if (requestSuccess(status)) {
+    // console.log('data>>>>', data, config);
+    if (import.meta.env.DEV) {
+      axios.post("/gen-dts", { [kebabCase(config.url as string)]: data });
+    }
     return response.data;
   }
   return handleError(response);
 }, handleError);
-
 
 /* function isNotCheck(context?: HttpConfigContext) {
   return !!context?.notCheck;

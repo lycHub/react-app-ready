@@ -1,6 +1,6 @@
 // To parse this data:
 //
-//   import { Convert } from "./file";
+//   import { Convert, Dts } from "./file";
 //
 //   const dts = Convert.toDts(json);
 //
@@ -8,21 +8,42 @@
 // match the expected interface, even if the JSON is valid.
 
 export interface Dts {
-    userId: number;
-    id:     number;
-    title:  string;
-    body:   string;
+    ret:     number;
+    data:    Datum[];
+    context: Context;
+}
+
+export interface Context {
+    basicRequestContext: BasicRequestContext;
+}
+
+export interface BasicRequestContext {
+    isHybrid:                    boolean;
+    isEmbedded3rdPartner:        boolean;
+    isKnowAmbassadorDistributor: boolean;
+    isM2WapHost:                 boolean;
+}
+
+export interface Datum {
+    linkType: number;
+    links:    Link[];
+}
+
+export interface Link {
+    name:     string;
+    url:      string;
+    nofollow: boolean;
 }
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-    public static toDts(json: string): Dts[] {
-        return cast(JSON.parse(json), a(r("Dts")));
+    public static toDts(json: string): Dts {
+        return cast(JSON.parse(json), r("Dts"));
     }
 
-    public static dtsToJson(value: Dts[]): string {
-        return JSON.stringify(uncast(value, a(r("Dts"))), null, 2);
+    public static dtsToJson(value: Dts): string {
+        return JSON.stringify(uncast(value, r("Dts")), null, 2);
     }
 }
 
@@ -180,10 +201,27 @@ function r(name: string) {
 
 const typeMap: any = {
     "Dts": o([
-        { json: "userId", js: "userId", typ: 0 },
-        { json: "id", js: "id", typ: 0 },
-        { json: "title", js: "title", typ: "" },
-        { json: "body", js: "body", typ: "" },
+        { json: "ret", js: "ret", typ: 0 },
+        { json: "data", js: "data", typ: a(r("Datum")) },
+        { json: "context", js: "context", typ: r("Context") },
+    ], false),
+    "Context": o([
+        { json: "basicRequestContext", js: "basicRequestContext", typ: r("BasicRequestContext") },
+    ], false),
+    "BasicRequestContext": o([
+        { json: "isHybrid", js: "isHybrid", typ: true },
+        { json: "isEmbedded3rdPartner", js: "isEmbedded3rdPartner", typ: true },
+        { json: "isKnowAmbassadorDistributor", js: "isKnowAmbassadorDistributor", typ: true },
+        { json: "isM2WapHost", js: "isM2WapHost", typ: true },
+    ], false),
+    "Datum": o([
+        { json: "linkType", js: "linkType", typ: 0 },
+        { json: "links", js: "links", typ: a(r("Link")) },
+    ], false),
+    "Link": o([
+        { json: "name", js: "name", typ: "" },
+        { json: "url", js: "url", typ: "" },
+        { json: "nofollow", js: "nofollow", typ: true },
     ], false),
 };
 

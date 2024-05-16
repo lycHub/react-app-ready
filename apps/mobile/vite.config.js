@@ -12,8 +12,8 @@ export default defineConfig(({ command }) => {
     plugins: [
       Inspect(),
       autoDts({
-        // customUniqKey: (pathname) => pathname + "-a.d",
         // outputDir: "/autoTypes",
+        // cover: true,
       }),
       react(),
       buildTime(),
