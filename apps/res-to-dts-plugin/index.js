@@ -16,13 +16,11 @@ const DefaultOptions = {
   routePath: "/gen-dts",
 };
 
-export function convertDataToDts(data) {}
-
 export default (options = {}) => {
   const finalOptions = { ...DefaultOptions, ...options };
 
   return {
-    name: "vite-plugin-request-to-dts",
+    name: "vite-plugin-res-to-dts",
     apply: "serve",
     configureServer(server) {
       return () => {

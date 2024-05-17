@@ -14,7 +14,7 @@
     "apps\\mobile",
     "apps\\react-single-plugin",
     "apps\\react-scope-css-plugin",
-    "apps\\request-to-dts-plugin"
+    "apps\\res-to-dts-plugin"
   ],
   "scripts": {
     "start": "npm run dev -w=@app-ready/mobile",

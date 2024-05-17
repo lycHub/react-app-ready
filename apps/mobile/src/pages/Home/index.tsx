@@ -12,9 +12,7 @@ function Home() {
     Promise.all([
       posts(),
       xmData(),
-    ]).then(res => {
-
-    });
+    ]).then(res => { });
   }
 
   return (

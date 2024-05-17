@@ -1,5 +1,5 @@
 {
-  "name": "vite-plugin-request-to-dts",
+  "name": "vite-plugin-res-to-dts",
   "version": "1.0.0",
   "description": "Automatic generation dts file based on request",
   "main": "index.js",
@@ -8,7 +8,7 @@
   "homepage": "https://github.com/lycHub",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lycHub/react-app-ready/tree/vitePlugin/apps/request-to-dts-plugin"
+    "url": "https://github.com/lycHub/react-app-ready/tree/vitePlugin/apps/res-to-dts-plugin"
   },
   "keywords": [
     "vite",

@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import buildTime from "@app-ready/libs/plugins/time";
 import Inspect from "vite-plugin-inspect";
-import autoDts from "vite-plugin-request-to-dts";
+import resToDts from "vite-plugin-res-to-dts";
 
 export default defineConfig(({ command }) => {
   const isLocal = command === "serve";
@@ -11,7 +11,7 @@ export default defineConfig(({ command }) => {
     cacheDir: "../../node_modules/.vite",
     plugins: [
       Inspect(),
-      autoDts({
+      resToDts({
         // outputDir: "/autoTypes",
         // cover: true,
       }),
