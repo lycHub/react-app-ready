@@ -2,6 +2,11 @@
 
 **Auto gen typescript definition file according to response by [quicktype](https://app.quicktype.io/)**
 
+> tip: the plugin only execute on vite server
+
+
+## [Demo](https://stackblitz.com/edit/vitejs-vite-bfnk6t?file=index.html)
+
 ## Usage
 > npm add vite-plugin-res-to-dts -D
 
@@ -20,10 +25,10 @@ export default {
   export default {
     plugins: [
        resToDts({
-        // 存放路径，相对当前根目录
+        // Storage path, relative to the current root directory
         outputDir: "/quick-types",
 
-        // 客户端需要调用的接口路由
+        // The node routing that the client needs to call
         routePath: "/gen-dts",
 
         /* 

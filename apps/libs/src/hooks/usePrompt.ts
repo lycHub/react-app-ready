@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef } from "react";
 import {
   useBeforeUnload,
-  useBlocker,
+  UNSAFE_DataRouterContext as useBlocker,
 } from "react-router-dom";
 
 // You can abstract `useBlocker` to use the browser's `window.confirm` dialog to
@@ -53,7 +53,7 @@ export function Prompt({ when, message, ...props }: PromptProps) {
   return null;
 }
 
-console.log('Prompt', Prompt.name);
+console.log("Prompt", Prompt.name);
 
 interface PromptProps {
   when: boolean;

@@ -1,7 +1,5 @@
 import bodyParser from "body-parser";
-import axios from "axios";
-import { compact, kebabCase } from "lodash-es";
-import { ensureFile, outputFile, pathExists } from "fs-extra";
+import { outputFile, pathExists } from "fs-extra";
 import { join } from "node:path";
 import {
   quicktype,
@@ -22,6 +20,9 @@ export default (options = {}) => {
   return {
     name: "vite-plugin-res-to-dts",
     apply: "serve",
+    configResolved(config) {
+      console.log("configResolved>>>", config.root);
+    },
     configureServer(server) {
       return () => {
         server.middlewares.use(bodyParser.urlencoded({ extended: false }));

@@ -7,6 +7,12 @@ import request from '../../utils/request';
 import { posts, post } from '../../apis/post';
 import { albums } from '../../apis/albums';
 import { xmData } from '../../apis/xmly';
+import { useMount } from 'ahooks';
+import axios from 'axios';
+
+function kebabCaseForPath(path: string) {
+  return path.split("/").filter(Boolean).join("-");
+}
 function Home() {
   function send() {
     Promise.all([
@@ -14,6 +20,16 @@ function Home() {
       xmData(),
     ]).then(res => { });
   }
+
+  useMount(() => {
+    fetch('https://dogapi.dog/api/v2/breeds')
+      .then(res => res.json())
+      .then(res => {
+        if (import.meta.env.DEV) {
+          axios.post("/gen-dts", { [kebabCaseForPath('/api/v2/breeds')]: res });
+        }
+      })
+  });
 
   return (
     <motion.div
