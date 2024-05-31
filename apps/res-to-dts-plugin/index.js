@@ -16,12 +16,13 @@ const DefaultOptions = {
 
 export default (options = {}) => {
   const finalOptions = { ...DefaultOptions, ...options };
-
+  let root = getDirname();
   return {
     name: "vite-plugin-res-to-dts",
     apply: "serve",
     configResolved(config) {
       console.log("configResolved>>>", config.root);
+      root = config.root;
     },
     configureServer(server) {
       return () => {
@@ -48,11 +49,7 @@ export default (options = {}) => {
             }
 
             const key = Object.keys(data)[0];
-            const destPath = join(
-              getDirname(),
-              finalOptions.outputDir,
-              `${key}.ts`
-            );
+            const destPath = join(root, finalOptions.outputDir, `${key}.ts`);
 
             if (!finalOptions.cover) {
               const isExit = await pathExists(destPath);

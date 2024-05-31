@@ -1,6 +1,6 @@
 # Vite plugin - Res to dts
 
-**Auto gen typescript definition file according to response by [quicktype](https://app.quicktype.io/)**
+**Auto gen typescript definition file according to response**
 
 > tip: the plugin only execute on vite server
 
@@ -41,7 +41,7 @@ Setting it to true will change this behavior
   }
 ```
 
-post请求[routePath]指定的路由，将response作为参数传入，推荐在拦截器中调用，已axios为例
+post request [routePath] designated route，Pass in the response as a parameter. It is recommended to call it in the interceptor，eg for axios: 
 
 ```javascript
 const request = axios.create({
@@ -53,9 +53,9 @@ request.interceptors.response.use((response) => {
   if (status === 200) {
      if (import.meta.env.DEV) {
       /* 
-        传入 {key: value}形式，key建议保证唯一，这样就不会重复生成dts file,
-        下面的示例是将url转成了kabab case作为key, 比如： /api/article/1 => api-article-1
-        并将 'api-article-1' 作为文件名生成 'api-article-1.ts'
+        Afferent {key: value}，key suggests ensuring uniqueness, so as not to generate duplicates dts file,
+        The following example is converting the URL to a kabab case as the key, eg： /api/article/1 => api-article-1，
+        and 'api-article-1' as file name to generate 'api-article-1.ts'
       */
       axios.post("/gen-dts", { [kebabCase(config.url as string)]: data });
     }
@@ -65,5 +65,3 @@ request.interceptors.response.use((response) => {
 }, error => Promise.reject('error'));
 
 ```
-
-## [Demo](https://stackblitz.com/edit/vitejs-vite-nc4lb2?file=src%2FApp.tsx)
