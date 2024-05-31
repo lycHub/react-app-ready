@@ -111,6 +111,9 @@ async function genType(data) {
   const { lines } = await quicktype({
     inputData,
     lang: "TypeScript",
+    rendererOptions: {
+      "just-types": "true",
+    },
   });
   if (lines?.length) {
     let str = "";
