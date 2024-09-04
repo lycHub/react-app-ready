@@ -19,6 +19,6 @@
     "defaults"
   ],
   "devDependencies": {
-    "vite-plugin-res-to-dts": "^1.0.0"
+    "vite-plugin-res-to-dts": "^1.0.3"
   }
 }

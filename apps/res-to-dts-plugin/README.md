@@ -1,6 +1,6 @@
 # Vite plugin - Res to dts
 
-**Auto gen typescript definition file according to response**
+**Auto gen typescript definition file according to response by [quicktype](https://app.quicktype.io/)**
 
 > tip: the plugin only execute on vite server
 
