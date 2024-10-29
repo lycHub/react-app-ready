@@ -2,6 +2,7 @@ import { Profiler } from "react";
 import { RouterProvider } from "react-router-dom";
 import AppRouter from "./router";
 import { MaskBg } from '@app-ready/libs';
+import { useMount } from "ahooks";
 
 function App() {
   function onRender() { }

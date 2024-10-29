@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './styles/index.scss';
 import { ConfigProvider } from 'antd';
+import axios from 'axios';
+import { addCollection } from '@iconify/react';
 
 const ResetFormConfig = {
   borderRadius: 0,
@@ -16,6 +18,11 @@ const MainColorConfig = {
   green: '#3ad2a3',
   yellow: '#fdca3f',
 }
+
+axios.get('/public/zs.json').then(({ data }) => {
+  // console.log(data);
+  addCollection(data);
+});
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <ConfigProvider

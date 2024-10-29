@@ -2,22 +2,13 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import buildTime from "@app-ready/libs/plugins/time";
 import Inspect from "vite-plugin-inspect";
-import resToDts from "vite-plugin-res-to-dts";
 
 export default defineConfig(({ command }) => {
   const isLocal = command === "serve";
   return {
     envDir: "envs",
     cacheDir: "../../node_modules/.vite",
-    plugins: [
-      Inspect(),
-      resToDts({
-        // outputDir: "/autoTypes",
-        // cover: true,
-      }),
-      react(),
-      buildTime(),
-    ],
+    plugins: [Inspect(), react(), buildTime()],
     server: {
       host: true,
       port: 8080,

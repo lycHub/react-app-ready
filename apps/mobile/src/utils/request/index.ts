@@ -1,6 +1,5 @@
 import axios from "axios";
 import { handleError, requestSuccess } from "./error";
-import { kebabCase } from "lodash-es";
 
 /* interface HttpConfigContext {
   notCheck: boolean;
@@ -36,10 +35,6 @@ request.interceptors.response.use((response) => {
   return handleError(response); */
 
   if (requestSuccess(status)) {
-    // console.log('data>>>>', data, config);
-    if (import.meta.env.DEV) {
-      axios.post("/gen-dts", { [kebabCase(config.url as string)]: data });
-    }
     return response.data;
   }
   return handleError(response);
