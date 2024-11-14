@@ -21,6 +21,7 @@
     "defaults"
   ],
   "devDependencies": {
+    "sass": "^1.80.7",
     "vite-plugin-res-to-dts": "*"
   }
 }
