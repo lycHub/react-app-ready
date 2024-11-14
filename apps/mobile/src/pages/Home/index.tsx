@@ -1,24 +1,31 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Button, DatePicker, Input, Select, TimePicker, Typography } from 'antd';
-import { xmData } from '../../apis/xmly';
-import { useMount } from 'ahooks';
-import axios from 'axios';
-import { Icon, addCollection, addIcon } from '@iconify/react';
-import { json } from 'react-router-dom';
+import React from "react";
+import { motion } from "framer-motion";
+import {
+  Button,
+  DatePicker,
+  Input,
+  Select,
+  TimePicker,
+  Typography,
+} from "antd";
+import { xmData } from "../../apis/xmly";
+import { useMount } from "ahooks";
+import axios from "axios";
+import { Icon, addCollection, addIcon } from "@iconify/react";
+import { json } from "react-router-dom";
+import cssString from "./style.scoped.scss?raw";
 
 function kebabCaseForPath(path: string) {
   return path.split("/").filter(Boolean).join("-");
 }
 function Home() {
-
   useMount(() => {
-
+    console.log("cssString>>>", cssString);
   });
 
   return (
     <motion.div
-      className='home'
+      className="home"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -26,8 +33,8 @@ function Home() {
     >
       <img src="/images/doc.png" alt="doc" width="48" height="48" />
       <div className="btn-group">
-        <p className='text-p'>text</p>
-        <Button type='primary'>Click</Button>
+        <p className="text-p">text</p>
+        <Button type="primary">Click</Button>
         <a>link</a>
         <Typography.Link>Alink</Typography.Link>
       </div>
@@ -39,25 +46,32 @@ function Home() {
           <Input.TextArea className="zs-input" bordered={false} allowClear />
         </div>
         <div className="from-control">
-          <Select className="zs-select" style={{ width: '300px' }} mode="multiple" showSearch allowClear optionFilterProp='label' bordered={false} options={[{ label: '撒旦撒', value: 'aa' }]} />
-
+          <Select
+            className="zs-select"
+            style={{ width: "300px" }}
+            mode="multiple"
+            showSearch
+            allowClear
+            optionFilterProp="label"
+            bordered={false}
+            options={[{ label: "撒旦撒", value: "aa" }]}
+          />
         </div>
         <div className="from-control">
-          <DatePicker className='zs-picker' bordered={false} allowClear />
-
+          <DatePicker className="zs-picker" bordered={false} allowClear />
         </div>
         <div className="from-control">
-          <TimePicker className='zs-picker' bordered={false} allowClear />
+          <TimePicker className="zs-picker" bordered={false} allowClear />
         </div>
       </div>
 
       <Icon icon="mdi-light:home" />
-      <Icon icon="zs:search" style={{ color: 'blue' }} />
-      <Icon icon="zs:shopping" style={{ color: 'red' }} />
-      <Icon icon="zs:user" style={{ color: 'yellow', fontSize: '24px' }} />
+      <Icon icon="zs:search" style={{ color: "blue" }} />
+      <Icon icon="zs:shopping" style={{ color: "red" }} />
+      <Icon icon="zs:user" style={{ color: "yellow", fontSize: "24px" }} />
     </motion.div>
-  )
+  );
 }
 
-Home.displayName = 'Home';
+Home.displayName = "Home";
 export default Home;
