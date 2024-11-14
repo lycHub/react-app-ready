@@ -1,14 +1,14 @@
-import React, { useCallback, useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { unstable_usePrompt as usePrompt } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
 import { Checkbox, Input, Stepper, TextArea } from "antd-mobile";
 import { ErrorMessage } from "@hookform/error-message";
 import ErrorMsgRender from "../../components/ErrorMsgRender";
 import { useSafeState } from "ahooks";
-import './base.scoped.scss';
+import "./base.scoped.scss";
 
-type FormValues = {
-  name: string
+interface FormValues {
+  name: string;
   age: number | null;
   job: string;
   hobby: string[];
@@ -24,37 +24,38 @@ function Basic() {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>({
-    mode: 'onChange',
+    mode: "onChange",
     // criteriaMode: 'all',
     defaultValues: {
-      name: '',
+      name: "",
       age: null,
-      job: '',
+      job: "",
       hobby: [],
-      address: '',
-    }
+      address: "",
+    },
   });
   const [block, setBlock] = useSafeState(false);
   const lockHandler = useCallback((event: BeforeUnloadEvent) => {
-    event.returnValue = '离开？';
+    event.returnValue = "离开？";
     return false;
   }, []);
 
   useEffect(() => {
-    const subscription = watch((value, { name }) => { // type, ...rest
+    const subscription = watch((value, { name }) => {
+      // type, ...rest
       // @ts-ignore
-      const res = !!value[name || 'name'];
+      const res = !!value[name || "name"];
       setBlock(res);
       if (res) {
-        addEventListener('beforeunload', lockHandler);
+        addEventListener("beforeunload", lockHandler);
       } else {
-        removeEventListener('beforeunload', lockHandler);
+        removeEventListener("beforeunload", lockHandler);
       }
-    })
+    });
     return () => {
-      subscription.unsubscribe()
-      removeEventListener('beforeunload', lockHandler);
-    }
+      subscription.unsubscribe();
+      removeEventListener("beforeunload", lockHandler);
+    };
   }, [watch]);
 
   function onSubmit(data: FormValues) {
@@ -69,7 +70,7 @@ function Basic() {
 
   usePrompt({
     when: block,
-    message: '尚未保存，确定离开？'
+    message: "尚未保存，确定离开？",
   });
   return (
     <form className="basic-form" onSubmit={handleSubmit(onSubmit)}>
@@ -83,19 +84,17 @@ function Basic() {
           control={control}
           name="name"
           rules={{
-            required: '请输入姓名',
+            required: "请输入姓名",
             minLength: {
               value: 3,
-              message: '至少3个字符'
+              message: "至少3个字符",
             },
             pattern: {
               value: /bob/,
-              message: '必须包含bob'
-            }
+              message: "必须包含bob",
+            },
           }}
-          render={({
-            field: { onChange, onBlur, value, name, ref }
-          }) => (
+          render={({ field: { onChange, onBlur, value, name, ref } }) => (
             <div className="form-control">
               <Input
                 onBlur={onBlur}
@@ -106,7 +105,9 @@ function Basic() {
               <ErrorMessage
                 errors={errors}
                 name={name}
-                render={({ message, messages }) => <ErrorMsgRender message={message} messages={messages} />}
+                render={({ message, messages }) => (
+                  <ErrorMsgRender message={message} messages={messages} />
+                )}
               />
             </div>
           )}
@@ -120,19 +121,17 @@ function Basic() {
           control={control}
           name="age"
           rules={{
-            required: '请输入年龄',
+            required: "请输入年龄",
             min: {
               value: 10,
-              message: '年龄不能小于10'
+              message: "年龄不能小于10",
             },
             max: {
               value: 20,
-              message: '年龄不能大于20'
-            }
+              message: "年龄不能大于20",
+            },
           }}
-          render={({
-            field: { onChange, onBlur, value, name, ref }
-          }) => (
+          render={({ field: { onChange, onBlur, value, name, ref } }) => (
             <div className="form-control">
               <Stepper
                 allowEmpty={true}
@@ -146,7 +145,9 @@ function Basic() {
               <ErrorMessage
                 errors={errors}
                 name={name}
-                render={({ message, messages }) => <ErrorMsgRender message={message} messages={messages} />}
+                render={({ message, messages }) => (
+                  <ErrorMsgRender message={message} messages={messages} />
+                )}
               />
             </div>
           )}
@@ -161,11 +162,9 @@ function Basic() {
           control={control}
           name="job"
           rules={{
-            required: '请输入职业',
+            required: "请输入职业",
           }}
-          render={({
-            field: { onChange, onBlur, value, name, ref }
-          }) => (
+          render={({ field: { onChange, onBlur, value, name, ref } }) => (
             <div className="form-control">
               <Input
                 onBlur={onBlur}
@@ -176,7 +175,9 @@ function Basic() {
               <ErrorMessage
                 errors={errors}
                 name={name}
-                render={({ message, messages }) => <ErrorMsgRender message={message} messages={messages} />}
+                render={({ message, messages }) => (
+                  <ErrorMsgRender message={message} messages={messages} />
+                )}
               />
             </div>
           )}
@@ -190,23 +191,21 @@ function Basic() {
           control={control}
           name="hobby"
           rules={{
-            required: '请选择爱好',
+            required: "请选择爱好",
           }}
-          render={({
-            field: { onChange, value, name }
-          }) => (
+          render={({ field: { onChange, value, name } }) => (
             <div className="form-control">
-              <Checkbox.Group
-                value={value}
-                onChange={onChange}>
-                <Checkbox value='apple'>苹果</Checkbox>
-                <Checkbox value='orange'>橘子</Checkbox>
-                <Checkbox value='banana'>香蕉</Checkbox>
+              <Checkbox.Group value={value} onChange={onChange}>
+                <Checkbox value="apple">苹果</Checkbox>
+                <Checkbox value="orange">橘子</Checkbox>
+                <Checkbox value="banana">香蕉</Checkbox>
               </Checkbox.Group>
               <ErrorMessage
                 errors={errors}
                 name={name}
-                render={({ message, messages }) => <ErrorMsgRender message={message} messages={messages} />}
+                render={({ message, messages }) => (
+                  <ErrorMsgRender message={message} messages={messages} />
+                )}
               />
             </div>
           )}
@@ -221,21 +220,19 @@ function Basic() {
           control={control}
           name="address"
           rules={{
-            required: '请输入住址',
+            required: "请输入住址",
             maxLength: {
               value: 100,
-              message: '最多100个字符'
-            }
+              message: "最多100个字符",
+            },
           }}
-          render={({
-            field: { onChange, onBlur, value, name, ref }
-          }) => (
+          render={({ field: { onChange, onBlur, value, name, ref } }) => (
             <div className="form-control">
               <TextArea
                 value={value}
                 maxLength={100}
                 onChange={onChange}
-                placeholder='请输入内容'
+                placeholder="请输入内容"
                 autoSize={{ minRows: 3, maxRows: 5 }}
                 ref={ref}
                 onBlur={onBlur}
@@ -243,18 +240,22 @@ function Basic() {
               <ErrorMessage
                 errors={errors}
                 name={name}
-                render={({ message, messages }) => <ErrorMsgRender message={message} messages={messages} />}
+                render={({ message, messages }) => (
+                  <ErrorMsgRender message={message} messages={messages} />
+                )}
               />
             </div>
           )}
         />
       </div>
       <div className="btn-group">
-        <button type="button" onClick={onReset}>reset</button>
+        <button type="button" onClick={onReset}>
+          reset
+        </button>
         <button type="submit">submit</button>
       </div>
     </form>
   );
 }
-Basic.displayName = 'Basic';
+Basic.displayName = "Basic";
 export default Basic;

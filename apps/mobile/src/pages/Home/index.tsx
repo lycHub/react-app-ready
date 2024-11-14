@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import {
   Button,
@@ -8,11 +7,9 @@ import {
   TimePicker,
   Typography,
 } from "antd";
-import { xmData } from "../../apis/xmly";
 import { useMount } from "ahooks";
 import axios from "axios";
-import { Icon, addCollection, addIcon } from "@iconify/react";
-import { json } from "react-router-dom";
+import { Icon } from "@iconify/react";
 import "./style.scoped.scss";
 // import cssString from "./style.scoped.scss?raw";
 

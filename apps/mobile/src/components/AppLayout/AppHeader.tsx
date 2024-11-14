@@ -1,20 +1,31 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import { HomePath } from '../../router';
+import { Link } from "react-router-dom";
+import { HomePath } from "../../router";
 
 function AppHeader() {
   return (
-    <header className='app-header'>
-      <nav className='h-full'>
-        <p><Link className="red" to={HomePath}>Home</Link></p>
-        <p><Link to="/posts">Posts</Link></p>
-        <p><Link to="/albums">Albums</Link></p>
-        <p><Link to="/forms">Forms</Link></p>
-        <p><Link to="/motion">Motion</Link></p>
+    <header className="app-header">
+      <nav className="h-full">
+        <p>
+          <Link className="red" to={HomePath}>
+            Home
+          </Link>
+        </p>
+        <p>
+          <Link to="/posts">Posts</Link>
+        </p>
+        <p>
+          <Link to="/albums">Albums</Link>
+        </p>
+        <p>
+          <Link to="/forms">Forms</Link>
+        </p>
+        <p>
+          <Link to="/motion">Motion</Link>
+        </p>
       </nav>
     </header>
-  )
+  );
 }
 
-AppHeader.displayName = 'AppHeader';
+AppHeader.displayName = "AppHeader";
 export default AppHeader;

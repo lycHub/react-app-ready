@@ -1,13 +1,18 @@
-import React, { PropsWithChildren } from 'react'
-import { CommonProps } from '@app-ready/libs';
-import './index.css';
-import { Spin } from 'antd';
+import "./index.css";
+import { Spin } from "antd";
+import { PropsWithChildren } from "react";
+import { NativeProps } from "antd-mobile/es/utils/native-props";
 
-function MaskBg({ className, children }: PropsWithChildren<Record<string, any> & CommonProps>) {
+function MaskBg({
+  className,
+  children,
+}: PropsWithChildren<Record<string, any> & NativeProps>) {
   return (
-    <div className={`mask-bg ${className}`}>{children || <Spin size='large' />}</div>
-  )
+    <div className={`mask-bg ${className}`}>
+      {children || <Spin size="large" />}
+    </div>
+  );
 }
 
-MaskBg.displayName = 'MaskBg';
+MaskBg.displayName = "MaskBg";
 export { MaskBg };

@@ -26,7 +26,7 @@ request.interceptors.request.use((config) => {
 }, handleError);
 
 request.interceptors.response.use((response) => {
-  const { status, data, config } = response;
+  const { status } = response;
   /* 
   const notCheck = isNotCheck((config as AxiosConfig).context);
   if (notCheck || requestSuccess(data.code)) { // 后端的code

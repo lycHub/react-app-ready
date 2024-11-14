@@ -22,7 +22,7 @@ function getFileType(file: string | UploadFile) {
   return target?.[0];
 }
 
-function checkFileType(file: UploadFile, types: Array<keyof typeof AcceptFileTypes>) {
+function checkFileType(file: UploadFile, types: (keyof typeof AcceptFileTypes)[]) {
   const fileTypeSuffix = file.type?.split('/').pop();
   const acceptTypes = types.map(key => AcceptFileTypes[key]).flat();
   if (fileTypeSuffix && acceptTypes) {

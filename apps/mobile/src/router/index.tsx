@@ -1,4 +1,3 @@
-import React from "react";
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import AppLayout from "../components/AppLayout";
 import ErrorPage from "../pages/Error";
