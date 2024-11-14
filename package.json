@@ -48,7 +48,6 @@
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
-    "@commitlint/prompt-cli": "^19.5.0",
     "@snipaste-cli/core": "^0.0.6",
     "@tsconfig/vite-react": "^3.0.2",
     "@types/eslint__js": "^8.42.3",
