@@ -14,13 +14,13 @@
     "@app-ready/libs": "*",
     "@iconify/react": "^5.0.2",
     "@iconify/tools": "^4.0.7",
-    "antd-mobile": "^5.33.0",
+    "antd-mobile": "^5.38.1",
     "antd-mobile-icons": "^0.3.0"
   },
   "browserslist": [
     "defaults"
   ],
   "devDependencies": {
-    "vite-plugin-res-to-dts": "^1.0.3"
+    "vite-plugin-res-to-dts": "*"
   }
 }

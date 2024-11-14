@@ -13,14 +13,21 @@ import { useMount } from "ahooks";
 import axios from "axios";
 import { Icon, addCollection, addIcon } from "@iconify/react";
 import { json } from "react-router-dom";
-import cssString from "./style.scoped.scss?raw";
+// import cssString from "./style.scoped.scss?raw";
 
 function kebabCaseForPath(path: string) {
   return path.split("/").filter(Boolean).join("-");
 }
 function Home() {
   useMount(() => {
-    console.log("cssString>>>", cssString);
+    // console.log("cssString>>>", cssString);
+    fetch("https://dogapi.dog/api/v2/breeds")
+      .then((res) => res.json())
+      .then((res) => {
+        if (import.meta.env.DEV) {
+          axios.post("/gen-dts", { [kebabCaseForPath("/api/v2/breeds")]: res });
+        }
+      });
   });
 
   return (
@@ -40,10 +47,14 @@ function Home() {
       </div>
       <div className="form-controls">
         <div className="from-control">
-          <Input className="zs-input" bordered={false} allowClear />
+          <Input className="zs-input" variant="borderless" allowClear />
         </div>
         <div className="from-control">
-          <Input.TextArea className="zs-input" bordered={false} allowClear />
+          <Input.TextArea
+            className="zs-input"
+            variant="borderless"
+            allowClear
+          />
         </div>
         <div className="from-control">
           <Select
@@ -53,15 +64,15 @@ function Home() {
             showSearch
             allowClear
             optionFilterProp="label"
-            bordered={false}
+            variant="borderless"
             options={[{ label: "撒旦撒", value: "aa" }]}
           />
         </div>
         <div className="from-control">
-          <DatePicker className="zs-picker" bordered={false} allowClear />
+          <DatePicker className="zs-picker" variant="borderless" allowClear />
         </div>
         <div className="from-control">
-          <TimePicker className="zs-picker" bordered={false} allowClear />
+          <TimePicker className="zs-picker" variant="borderless" allowClear />
         </div>
       </div>
 

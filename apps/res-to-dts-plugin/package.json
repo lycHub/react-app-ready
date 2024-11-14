@@ -19,9 +19,9 @@
   "author": "ysx",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.20.2",
+    "body-parser": "^1.20.3",
     "fs-extra": "^11.2.0",
-    "quicktype-core": "^23.0.162"
+    "quicktype-core": "^23.0.170"
   },
   "engines": {
     "node": ">=18"

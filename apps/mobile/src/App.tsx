@@ -1,15 +1,19 @@
 import { Profiler } from "react";
 import { RouterProvider } from "react-router-dom";
 import AppRouter from "./router";
-import { MaskBg } from '@app-ready/libs';
+import { MaskBg } from "@app-ready/libs";
 import { useMount } from "ahooks";
 
 function App() {
-  function onRender() { }
+  function onRender() {}
   return (
     <div className="app h-full">
       <Profiler id="app" onRender={onRender}>
-        <RouterProvider router={AppRouter()} fallbackElement={<MaskBg className="center" />} />
+        <RouterProvider
+          future={{ v7_startTransition: true }}
+          router={AppRouter()}
+          // fallbackElement={<MaskBg className="center" />}
+        />
       </Profiler>
     </div>
   );

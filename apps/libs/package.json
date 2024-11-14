@@ -16,9 +16,9 @@
   "author": "ysx",
   "license": "ISC",
   "peerDependencies": {
-    "antd": "^5.11.1",
-    "antd-mobile": "^5.33.0",
-    "dayjs": "^1.11.10",
-    "react-router-dom": "^6.23.1"
+    "antd": "^5.22.1",
+    "antd-mobile": "^5.38.1",
+    "dayjs": "^1.11.13",
+    "react-router-dom": "^6.28.0"
   }
 }
