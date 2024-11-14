@@ -13,6 +13,7 @@ import { useMount } from "ahooks";
 import axios from "axios";
 import { Icon, addCollection, addIcon } from "@iconify/react";
 import { json } from "react-router-dom";
+import "./style.scoped.scss";
 // import cssString from "./style.scoped.scss?raw";
 
 function kebabCaseForPath(path: string) {
