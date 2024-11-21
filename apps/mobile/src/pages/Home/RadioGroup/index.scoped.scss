@@ -1,0 +1,38 @@
+.radio-group {
+  --radio-border-color: #d8d8d8;
+  --radio-bg-color: #fff;
+  --radio-inner-bg-color: #fff;
+  .radio-item {
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+    .radio-circle {
+      width: 16px;
+      aspect-ratio: 1;
+      border: 1px solid var(--radio-border-color);
+      background-color: var(--radio-bg-color);
+      // border-color: 1px solid #0072ef;
+      // background-color: #0072ef;
+      border-radius: 50%;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      &::after {
+        content: "";
+        display: block;
+        width: 8px;
+        aspect-ratio: 1;
+        background-color: var(--radio-inner-bg-color);
+        border-radius: inherit;
+      }
+    }
+  }
+
+  .radio-item.checked {
+    --radio-border-color: #0072ef;
+    --radio-bg-color: #0072ef;
+    --radio-inner-bg-color: #fff;
+  }
+}

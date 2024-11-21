@@ -1,4 +1,4 @@
-import { Key } from 'react';
+import { Key } from "react";
 
 type TypeWithUndefined<T> = T | undefined;
 type TypeWithNull<T> = T | null;
@@ -23,12 +23,11 @@ interface TreeOption<T extends Record<string, any>> {
 }
 
 type CopyKeys<T> = {
-  [P in keyof T]: T[P]
-}
-type PartialByKeys<
-  T,
-  K extends keyof any = keyof T
-> = CopyKeys<Partial<Pick<T, Extract<keyof T, K>>> & Omit<T, K>>;
+  [P in keyof T]: T[P];
+};
+type PartialByKeys<T, K extends keyof any = keyof T> = CopyKeys<
+  Partial<Pick<T, Extract<keyof T, K>>> & Omit<T, K>
+>;
 
 interface ServerResponseDto<T = any> {
   code: number;
@@ -36,7 +35,10 @@ interface ServerResponseDto<T = any> {
   data?: T;
 }
 
+type StrOrNum = string | number;
+
 export type {
+  StrOrNum,
   TypeWithUndefined,
   TypeWithNull,
   SelectOption,
@@ -44,6 +46,5 @@ export type {
   CommonProps,
   SingleOrArray,
   PartialByKeys,
-  ServerResponseDto
-}
-
+  ServerResponseDto,
+};
