@@ -9,7 +9,7 @@ import {
 } from "antd";
 import { useMount } from "ahooks";
 import axios from "axios";
-import { Icon } from "@iconify/react";
+import { Icon } from "@iconify-icon/react";
 import "./style.scoped.scss";
 // import cssString from "./style.scoped.scss?raw";
 
@@ -73,8 +73,8 @@ function Home() {
           <TimePicker className="zs-picker" variant="borderless" allowClear />
         </div>
       </div>
-
-      <Icon icon="mdi-light:home" />
+      <hr />
+      <Icon icon="mdi-light:home" rotate="90deg" />
       <Icon icon="zs:search" style={{ color: "blue" }} />
       <Icon icon="zs:shopping" style={{ color: "red" }} />
       <Icon icon="zs:user" style={{ color: "yellow", fontSize: "24px" }} />

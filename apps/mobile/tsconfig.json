@@ -1,7 +1,11 @@
 {
   "extends": "@tsconfig/vite-react/tsconfig.json",
   "include": [
-    "src", "vite-env.d.ts", "react-env.d.ts" ],
+    "src",
+    "vite-env.d.ts",
+    "react-env.d.ts",
+    "web-component.d.ts"
+  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

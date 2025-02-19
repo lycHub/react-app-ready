@@ -4,7 +4,7 @@ import App from './App';
 import './styles/index.scss';
 import { ConfigProvider } from 'antd';
 import axios from 'axios';
-import { addCollection } from '@iconify/react';
+import { addCollection } from '@iconify-icon/react';
 
 const ResetFormConfig = {
   borderRadius: 0,

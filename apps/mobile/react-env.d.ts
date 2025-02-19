@@ -1,4 +1,4 @@
-declare module 'react' {
+declare module "react" {
   interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
     initial?: any;
     animate?: any;
@@ -6,3 +6,5 @@ declare module 'react' {
     transition?: any;
   }
 }
+
+// web-component dts
