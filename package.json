@@ -12,6 +12,7 @@
   "workspaces": [
     "apps\\libs",
     "apps\\mobile",
+    "apps\\wechat",
     "apps\\react-single-plugin",
     "apps\\react-scope-css-plugin",
     "apps\\res-to-dts-plugin"

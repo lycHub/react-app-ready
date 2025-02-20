@@ -1,15 +1,16 @@
 {
   "name": "miniprogram-ts-less-quickstart",
   "version": "1.0.0",
-  "description": "",
+  "description": "miniprogram",
+  "type": "module",
   "scripts": {
+    "icon:css": "node icon"
   },
   "keywords": [],
   "author": "",
   "license": "",
-  "dependencies": {
-  },
   "devDependencies": {
+    "@iconify/tools": "^4.1.1",
     "miniprogram-api-typings": "^2.8.3-1"
   }
 }
