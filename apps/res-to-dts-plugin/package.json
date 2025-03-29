@@ -1,9 +1,9 @@
 {
   "name": "vite-plugin-res-to-dts",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Automatic generation dts file based on request",
-  "main": "index.js",
-  "typings": "index.d.ts",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "type": "module",
   "homepage": "https://github.com/lycHub",
   "repository": {
@@ -17,7 +17,15 @@
     "request"
   ],
   "author": "ysx",
-  "license": "ISC",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsc -w",
+    "build": "tsc && npm run build:type",
+    "build:type": "tsc --project tsconfig.type.json"
+  },
   "dependencies": {
     "body-parser": "^1.20.3",
     "fs-extra": "^11.2.0",
@@ -25,5 +33,13 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.5",
+    "@types/fs-extra": "^11.0.4",
+    "typescript": "^5.8.2"
+  },
+  "peerDependencies": {
+    "vite": "^5.4.11"
   }
 }

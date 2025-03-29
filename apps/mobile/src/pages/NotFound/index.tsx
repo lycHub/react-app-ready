@@ -2,7 +2,7 @@ import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import './index.scss';
 import { Result } from "antd";
-import { HomePath } from "../../router";
+import { FallbackPath } from "../../router";
 
 function NotFoundPage() {
   const nav = useNavigate();
@@ -13,7 +13,7 @@ function NotFoundPage() {
       title="404"
       subTitle="Sorry, the page you visited does not exist."
       extra={[
-        <Button key="toHome" onClick={() => { nav(HomePath) }}>回首页</Button>,
+        <Button key="toHome" onClick={() => { nav(FallbackPath) }}>回首页</Button>,
       ]}
     />
   );

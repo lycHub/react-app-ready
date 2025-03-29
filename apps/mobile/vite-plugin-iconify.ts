@@ -8,6 +8,7 @@ import {
   parseColors,
   isEmptyColor,
 } from "@iconify/tools";
+import { PluginOption } from "vite";
 
 export function getDirname() {
   const filename = fileURLToPath(import.meta.url);
@@ -19,7 +20,7 @@ const DefaultOptions = {
   destPath: "/public/zs.json",
 };
 
-export default (options = {}) => {
+export default (options = {}): PluginOption => {
   const finalOptions = { ...DefaultOptions, ...options };
   let root = getDirname();
   return {
@@ -96,7 +97,14 @@ async function refreshIconJson({
       parseColors(svg, {
         defaultColor: "currentColor",
         callback: (attr, colorStr, color) => {
-          return !color || isEmptyColor(color) ? colorStr : "currentColor";
+          if (!color) {
+            return colorStr;
+          }
+
+          if (isEmptyColor(color)) {
+            return color;
+          }
+          return "currentColor";
         },
       });
 

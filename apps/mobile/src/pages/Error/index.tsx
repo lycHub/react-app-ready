@@ -3,7 +3,7 @@ import { Button } from "antd";
 import { isRouteErrorResponse, useNavigate, useRouteError } from "react-router-dom";
 import './index.scss';
 import { Result } from "antd";
-import { HomePath } from "../../router";
+import { FallbackPath } from "../../router";
 
 const tip = {
   title: '加载失败',
@@ -41,7 +41,7 @@ function ErrorPage({ errorInfo }: { errorInfo?: Record<string, any>; }) {
       title={errorTip.title}
       subTitle={errorTip.description}
       extra={[
-        <Button key="toHome" onClick={() => { nav(HomePath) }}>回首页</Button>,
+        <Button key="toHome" onClick={() => { nav(FallbackPath) }}>回首页</Button>,
         <Button key="retry" type="primary" onClick={() => { location?.reload() }}>重试</Button>,
       ]}
     />

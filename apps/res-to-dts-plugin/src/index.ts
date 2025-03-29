@@ -6,7 +6,8 @@ import {
   InputData,
   jsonInputForTargetLanguage,
 } from "quicktype-core";
-import { isObj, isArray, getDirname } from "./utils.js";
+import { isObj, isArray, getDirname, isJsonString } from "./utils.js";
+import { PluginOption } from "vite";
 
 const DefaultOptions = {
   outputDir: "/quick-dts",
@@ -14,14 +15,14 @@ const DefaultOptions = {
   routePath: "/gen-dts",
 };
 
-export default (options = {}) => {
+export default (options = {}): PluginOption => {
   const finalOptions = { ...DefaultOptions, ...options };
   let root = getDirname();
   return {
     name: "vite-plugin-res-to-dts",
     apply: "serve",
     configResolved(config) {
-      console.log("configResolved>>>", config.root);
+      // console.log("configResolved>>>", config.root);
       root = config.root;
     },
     configureServer(server) {
@@ -38,12 +39,12 @@ export default (options = {}) => {
               next();
             };
 
-            const data = req.body;
-            // console.log("data>>>", data);
+            // @ts-expect-error valid
+            const data = req.body as any;
 
             const errMsg = validData(data);
             if (errMsg) {
-              console.log("request-to-dts error: ", errMsg);
+              console.error("Gen dts error: ", errMsg);
               end();
               return;
             }
@@ -60,16 +61,19 @@ export default (options = {}) => {
             }
 
             try {
-              const content = Object.values(data)[0];
+              const content = Object.values(data)[0] as Record<string, unknown>;
               const result = await genType(content);
               // console.log("quicktype res>>>", result);
               if (result) {
                 await outputFile(destPath, result, {
                   flag: "a",
                 });
+                console.log("Gen dts>>>", "Gen dts file success");
+              } else {
+                console.error("Gen dts error>>>", "Gen dts file failed");
               }
             } catch (error) {
-              console.error("axios error>>>", error);
+              console.error("Gen dts error>>>", error);
             } finally {
               end();
             }
@@ -80,12 +84,17 @@ export default (options = {}) => {
   };
 };
 
-function validData(data) {
+function validData(data: unknown) {
   let errMsg = "";
-  if (!isObj(data)) {
+  const jsonData = isJsonString(data);
+  if (!jsonData) {
+    errMsg = "data must be a json";
+  }
+
+  if (!isObj(jsonData)) {
     errMsg = "data must be an object";
   }
-  const value = Object.values(data)[0];
+  const value = Object.values(jsonData)[0];
 
   if (!isObj(value) && !isArray(value)) {
     errMsg = "value must be an object or an array";
@@ -94,12 +103,9 @@ function validData(data) {
   return errMsg;
 }
 
-async function genType(data) {
+async function genType(data: Record<string, unknown>) {
   const jsonInput = jsonInputForTargetLanguage("TypeScript");
 
-  // We could add multiple samples for the same desired
-  // type, or many sources for other types. Here we're
-  // just making one type from one piece of sample JSON.
   await jsonInput.addSource({
     name: "dts",
     samples: [JSON.stringify(data)],

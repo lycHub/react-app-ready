@@ -34,7 +34,14 @@ const ignoreNames = ["logo"];
       parseColors(svg, {
         defaultColor: "currentColor",
         callback: (attr, colorStr, color) => {
-          return !color || isEmptyColor(color) ? colorStr : "currentColor";
+          if (!color) {
+            return colorStr;
+          }
+
+          if (isEmptyColor(color)) {
+            return color;
+          }
+          return "currentColor";
         },
       });
 

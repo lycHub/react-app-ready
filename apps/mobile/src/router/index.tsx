@@ -3,8 +3,9 @@ import AppLayout from "../components/AppLayout";
 import ErrorPage from "../pages/Error";
 import Home from "../pages/Home";
 import { MaskBg } from "@app-ready/libs";
+import Play from "../pages/Play";
 
-export const HomePath = "/home";
+export const FallbackPath = "/play";
 
 function AppRouter() {
   /* useEffect(() => {
@@ -18,6 +19,10 @@ function AppRouter() {
         errorElement: <ErrorPage />,
         hydrateFallbackElement: <MaskBg className="center" />,
         children: [
+          {
+            path: "play",
+            element: <Play />,
+          },
           {
             path: "home",
             element: <Home />,
@@ -52,7 +57,7 @@ function AppRouter() {
           },
           {
             path: "",
-            element: <Navigate to={HomePath} />,
+            element: <Navigate to={FallbackPath} />,
           },
           {
             path: "*",

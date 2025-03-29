@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
-import { HomePath } from "../../router";
+import { FallbackPath } from "../../router";
 
 function AppHeader() {
   return (
     <header className="app-header">
       <nav className="h-full">
         <p>
-          <Link className="red" to={HomePath}>
+          <Link to={FallbackPath}>Play</Link>
+        </p>
+        <p>
+          <Link className="red" to="/home">
             Home
           </Link>
         </p>
