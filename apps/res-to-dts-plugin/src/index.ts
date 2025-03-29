@@ -7,15 +7,21 @@ import {
   jsonInputForTargetLanguage,
 } from "quicktype-core";
 import { isObj, isArray, getDirname, isJsonString } from "./utils.js";
-import { PluginOption } from "vite";
+import { Plugin } from "vite";
 
-const DefaultOptions = {
+interface Options {
+  outputDir: string;
+  cover: boolean;
+  routePath: string;
+}
+
+const DefaultOptions: Options = {
   outputDir: "/quick-dts",
   cover: false,
   routePath: "/gen-dts",
 };
 
-export default (options = {}): PluginOption => {
+export default (options?: Partial<Options>): Plugin => {
   const finalOptions = { ...DefaultOptions, ...options };
   let root = getDirname();
   return {
