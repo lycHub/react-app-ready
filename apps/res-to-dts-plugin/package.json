@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-res-to-dts",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Automatic generation dts file based on request",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -29,7 +29,7 @@
   "dependencies": {
     "body-parser": "^1.20.3",
     "fs-extra": "^11.2.0",
-    "quicktype-core": "^23.0.170"
+    "quicktype-core": "^23.2.6"
   },
   "engines": {
     "node": ">=18"

@@ -12,7 +12,7 @@ export default defineConfig(({ command }) => {
     plugins: [Inspect(), react(), iconify(), autoDts()],
     server: {
       host: true,
-      port: 8080,
+      port: 8000,
       strictPort: true,
     },
     build: {

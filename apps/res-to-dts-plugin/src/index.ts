@@ -110,7 +110,7 @@ function validData(data: unknown) {
 }
 
 async function genType(data: Record<string, unknown>) {
-  const jsonInput = jsonInputForTargetLanguage("TypeScript");
+  const jsonInput = jsonInputForTargetLanguage("ts");
 
   await jsonInput.addSource({
     name: "dts",
@@ -122,7 +122,7 @@ async function genType(data: Record<string, unknown>) {
 
   const { lines } = await quicktype({
     inputData,
-    lang: "TypeScript",
+    lang: "ts",
     rendererOptions: {
       "just-types": "true",
     },
