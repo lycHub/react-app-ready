@@ -17,7 +17,7 @@
     "css"
   ],
   "author": "ysx",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@babel/generator": "^7.26.2",
     "@babel/parser": "^7.26.2",
