@@ -24,7 +24,7 @@
     "build:prod": "npm run build:prod -w=@app-ready/mobile",
     "lint": "eslint apps/*/src/**/*.{ts,tsx} --color --fix",
     "styleLint": "stylelint apps/*/src/**/*.{scss,css} --color",
-    "prepare": "husky init",
+    "prepare": "husky",
     "commit": "cz",
     "update": "ncu -u -ws --root && npm i --include-workspace-root --workspaces"
   },
