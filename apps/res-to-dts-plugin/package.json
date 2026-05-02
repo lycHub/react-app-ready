@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-res-to-dts",
-  "version": "1.0.8",
+  "version": "1.0.11",
   "description": "Automatic generation dts file based on request",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -40,6 +40,6 @@
     "typescript": "^5.8.2"
   },
   "peerDependencies": {
-    "vite": "^8.0.10"
+    "vite": "^5.4.11"
   }
 }

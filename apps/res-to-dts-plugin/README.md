@@ -65,3 +65,16 @@ request.interceptors.response.use((response) => {
 }, error => Promise.reject('error'));
 
 ```
+
+## npm i peerDependencies error: "unable to resolve dependency tree"
+
+请加入以下配置即可：
+```json
+{
+  "overrides": {
+    "vite-plugin-res-to-dts": {
+      "vite": "$vite"
+    }
+  }
+}
+```
